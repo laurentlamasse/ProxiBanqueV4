@@ -50,13 +50,17 @@ public class Client {
 
 	}
 	
-	public Client(String nom, String prenom, String email, String adresse, CompteCourant compteCourant,
-			CompteEpargne compteEpargne) {
+	public Client(String nom, String prenom, String email, String adresse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.adresse = adresse;
+	}
+	
+	public Client(String nom, String prenom, String email, String adresse, CompteCourant compteCourant,
+			CompteEpargne compteEpargne) {
+		this(nom, prenom, email, adresse);
 		this.compteCourant = compteCourant;
 		this.compteEpargne = compteEpargne;
 	}
