@@ -1,6 +1,10 @@
 package com.gtm.proxibanque.domaine;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import java.io.Serializable;
 
 /**
@@ -25,6 +29,7 @@ public abstract class Compte {
 	private String numeroCompte;
 	private double solde;
 	@OneToOne
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Client proprietaire;
 	
 	//CONSTRUCTEURS
