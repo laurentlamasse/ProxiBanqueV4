@@ -1,0 +1,9 @@
+#ignorer tous les fichiers dans le répertoire target
+target/
+
+#ignorer les fichiers en bytecode (.class)
+*.class
+
+#ignorer les fichiers de la documentation
+doc
+javadoc.xml
