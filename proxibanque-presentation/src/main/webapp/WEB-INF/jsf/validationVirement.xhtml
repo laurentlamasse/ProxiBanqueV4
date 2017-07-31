@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+>
+
+<ui:composition template="/template/layout.xhtml">
+    <ui:define name="page_title">Virement</ui:define>
+    <ui:define name="content">
+        <div class="container-fluid">
+        <!--Corps de la page-->
+			
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+			
+				<h1>Validation du virement</h1>
+	
+                    id du compte débité : #{virementController.virement.compteDebiteur.id} <br/>
+                    id du compte crédité : #{virementController.virement.compteCrediteur.id} <br/>
+                    montant du virement : #{virementController.virement.montant} <br/>
+
+	            <h:form styleClass="form-horizontal">
+	                <div class="col-md-offset-1 col-md-2">
+	                    <h:commandButton value="Valider le virement" action="#{virementController.creerVirement}" styleClass="btn btn-primary"/>
+	                </div>
+	
+	            </h:form>
+		
+			</div>
+		</div>
+		</div>
+        
+    </ui:define>
+</ui:composition>
+</html>

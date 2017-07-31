@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+>
+
+<ui:composition template="/template/layout.xhtml">
+    <ui:define name="page_title">Création d'un client</ui:define>
+    <ui:define name="content">
+        <div class="container-fluid">
+        <!--Corps de la page-->
+		<div class="row">
+			<h1>Nouveau client</h1>
+			<hr />
+	            <h:form styleClass="form-horizontal">
+	                <div class="form-group">
+	                    <h:outputLabel for="nom">Nom : </h:outputLabel>
+			  			<h:inputText id="nom" required="true" requiredMessage="Veuillez entrer un nom" value="#{clientController.client.nom}" a:placeholder="nom"/> 
+			  			<h:message for = "nom" style = "color:red" />
+	                    
+	                </div>
+	                <div class="form-group">
+	                    <h:outputLabel for="prenom">Prenom : </h:outputLabel>
+			  			<h:inputText id="prenom" required="true" requiredMessage="Veuillez entrer un prenom" value="#{clientController.client.prenom}" a:placeholder="prenom"/> 
+			  			<h:message for = "prenom" style = "color:red" />
+	                    
+	                </div>
+	                <div class="form-group">
+	                    <h:outputLabel for="adresse">adresse : </h:outputLabel>
+			  			<h:inputText id="adresse" required="true" requiredMessage="Veuillez entrer un adresse" value="#{clientController.client.adresse}" a:placeholder="adresse"/> 
+			  			<h:message for = "adresse" style = "color:red" />
+	                </div>
+	
+	                <div class="form-group">
+	                    <h:outputLabel for="email">email : </h:outputLabel>
+			  			<h:inputText id="email" required="true" requiredMessage="Veuillez entrer un email" value="#{clientController.client.email}" a:placeholder="email"/> 
+			  			<h:message for = "email" style = "color:red" />
+	                    
+	                </div>
+	                <div class="form-group">
+	                    <div class="col-md-2">
+		                    <h:selectBooleanCheckbox id="compteCourant" value="#{clientController.selectCC}"/>
+		                    <h:outputLabel value="Compte courant" for="compteCourant"/>
+	                    </div>
+	                    <div class="col-md-offset-1 col-md-2">
+	                    	<h:outputLabel for="soldeCC">Solde : </h:outputLabel>
+				  			<h:inputText id="soldeCC" required="true" requiredMessage="Veuillez entrer un solde" value="#{clientController.soldeCC}" a:placeholder="solde"/> 
+				  			<h:message for = "soldeCC" style = "color:red" />
+	                    </div>
+	                    <div class="col-md-offset-1 col-md-2">
+	                    	<h:outputLabel for="decouvertCC">Découvert : </h:outputLabel>
+				  			<h:inputText id="decouvertCC" required="true" requiredMessage="Veuillez entrer un decouvert" value="#{clientController.decouvertCC}" a:placeholder="decouvert"/> 
+				  			<h:message for = "decouvertCC" style = "color:red" />
+	                    </div>
+	                </div>
+	                <div class="form-group">
+	                	<div class="col-md-2">
+		                    <h:selectBooleanCheckbox id="compteEpargne" value="#{clientController.selectCE}"/>
+		                    <h:outputLabel value="Compte épargne" for="compteEpargne"/>
+		                </div>
+		                <div class="col-md-offset-1 col-md-2">
+	                    	<h:outputLabel for="soldeCE">Solde : </h:outputLabel>
+				  			<h:inputText id="soldeCE" required="true" requiredMessage="Veuillez entrer un solde" value="#{clientController.soldeCE}" a:placeholder="solde"/> 
+				  			<h:message for = "soldeCE" style = "color:red" />
+	                    </div>
+	                    <div class="col-md-offset-1 col-md-2">
+	                    	<h:outputLabel for="TauxCE">Taux : </h:outputLabel>
+				  			<h:inputText id="TauxCE" required="true" requiredMessage="Veuillez entrer un taux de rémunération" value="#{clientController.tauxCE}" a:placeholder="taux"/> 
+				  			<h:message for = "TauxCE" style = "color:red" />
+	                    </div>
+	                </div>
+	                <div class="col-md-offset-1 col-md-2">
+	                    <h:commandButton value="Ajouter à la liste" action="#{clientController.ajouterClient}" styleClass="btn btn-primary"/>
+	                </div>
+	                <div class="col-md-offset-1 col-md-2">
+	                    <h:link outcome="gestionClientBS" styleClass="btn btn-danger">Annuler</h:link>
+	                </div>
+	            </h:form>
+		</div>
+		</div>        
+    </ui:define>
+</ui:composition>
+</html>

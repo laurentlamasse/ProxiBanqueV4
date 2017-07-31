@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+>
+
+<ui:composition template="/template/layout.xhtml">
+    <ui:define name="page_title">Gestion des clients</ui:define>
+    <ui:define name="content">
+        <div class="container-fluid">
+        <!--Corps de la page-->
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+            	
+            	<h1>Gestion des vos conseillers</h1>
+            	<hr/>
+            	<h:panelGroup rendered="#{empty employeController.listeConseiller}">
+                	<em>Pas de conseillers.</em>
+                </h:panelGroup>
+                <h:dataTable var="c" value="#{employeController.listeConseiller}" rendered="#{not empty employeController.listeConseiller}" styleClass="table table-hover">
+                    <h:column>
+                        <f:facet name="header">Nom</f:facet>
+                        #{c.nom}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Prénom</f:facet>
+                        #{c.prenom}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Login</f:facet>
+                        #{c.login}
+                    </h:column>
+                </h:dataTable>
+                
+            </div>
+		</div>
+		</div>
+    </ui:define>
+</ui:composition>
+</html>

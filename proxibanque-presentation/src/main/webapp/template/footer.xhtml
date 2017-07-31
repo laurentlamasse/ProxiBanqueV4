@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+>
+
+<ui:composition>
+    <!--Pied de page-->
+    <div class="container-fluid" id="piedPage">
+        <div class="text-center">
+            <a href="#container" title="To Top" class="center">
+                <span >^</span>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <p>> A propos</p>
+            <p>> <a href="contact.xhtml">Contact</a></p>
+            <p>> Plan du site</p>
+            <p>> Mentions légales</p>
+        </div>
+        <div class="col-md-offset-4 col-md-1">
+            <h:outputLink value="https://www.facebook.com">
+                <h:graphicImage library="img" name="facebook.svg" alt="Facebook icon" id="iconFacebook"/>
+                Facebook
+            </h:outputLink>
+
+        </div>
+        <div class="col-md-1">
+            <h:outputLink value="https://www.twitter.com">
+                <h:graphicImage library="img" name="twitter.svg" alt="Twitter icon" id="iconTwitter"/>
+                Twitter
+            </h:outputLink>
+        </div>
+        <div class="col-md-1">
+            <h:outputLink value="https://plus.google.com">
+                <h:graphicImage library="img" name="google-plus.svg" alt="Google+ icon" id="iconGoogle"/>
+                Google+
+            </h:outputLink>
+        </div>
+        <div class="col-md-1">
+            <h:outputLink value="https://www.youtube.com">
+                <h:graphicImage library="img" name="youtube.svg" alt="Youtube icon" id="iconYoutube"/>
+                YouTube
+            </h:outputLink>
+        </div>
+    </div>
+</ui:composition>
+</html>

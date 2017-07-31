@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<head>
+<title>ProxiBanque SI</title>
+</head>
+<body>
+	<ui:composition template="/template/layout.xhtml">
+		<ui:define name="content">
+			<div class="container-fluid">
+				<!--En-tête de la page-->
+            <div class="row">
+                <div class="col-md-3">
+                    <h:graphicImage library="img" styleClass="img-responsive" id="logo" name="logobanque.png"/>
+                </div>
+                <div class="col-md-8 text-justify">
+                    <h1 id="demoJS">Proxi Banque</h1>
+                    <h3>La banque proche de ses clients</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                        deserunt mollit anim id est laborum. </p>
+                </div>
+            </div>
+
+            <!--Corps de la page-->
+            <h1>Bienvenue sur ProxiBanque SI</h1>
+            <div class="row">
+                <div class="col-md-8 text-justify">
+                    <h3>Gestion de vos clients</h3>
+                    <p>Une application entièrement pensée pour faciliter la vie des conseillers de ProxiBanque. Votre
+                        travail sera plus simple et plus efficace.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum. </p>
+
+                    <h3>Service de virements banquaires</h3>
+                    <p>Un service innovant et performant, il n'a jamais été aussi simple d'effectuer un virement.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                        culpa qui officia deserunt mollit anim id est laborum. </p>
+                </div>
+                <div class="col-md-offset-1 col-md-3 text-justify well well-sm" id="wellConnexion">
+                    <h3>Identifiez vous :</h3>
+                    <br/>
+                    <h:form>
+                        <h:commandButton styleClass="btn btn-primary btn-block" value="Connexion" action="#{sessionController.login}"/>
+                    </h:form>
+                </div>
+            </div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
