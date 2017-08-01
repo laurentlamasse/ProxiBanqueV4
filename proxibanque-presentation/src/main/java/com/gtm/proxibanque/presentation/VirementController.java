@@ -1,10 +1,18 @@
 package com.gtm.proxibanque.presentation;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.stream.Collectors;
+=======
+import java.util.Calendar;
+import java.util.Date;
+>>>>>>> 578f9bc3dcfac48e247bfbb3289430f3a6b4ef4a
 
 import javax.annotation.PostConstruct;
 
+import org.primefaces.model.chart.PieChartModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -27,8 +35,12 @@ public class VirementController {
 	private String message;
 	private Compte compteDebiteur;
 	private Compte compteCrediteur;
+	private PieChartModel camembert;
+	private Date date1;
+	private Date date2;
+	private Calendar c1;
+	private Calendar c2;
 	
-
 	public double getMontant() {
 		return montant;
 	}
@@ -51,6 +63,17 @@ public class VirementController {
 		virement = new Virement();
 		listeVirement = new ArrayList<Virement>();
 		listeVirement = (ArrayList<Virement>) virementService.listerVirements();
+		c1 = Calendar.getInstance();
+		c2 = Calendar.getInstance();
+		c1.setTime(new Date());
+		date2 = c1.getTime();
+		c2.setTime(new Date());
+		c2.add(Calendar.DATE, -30);
+		date1 = c2.getTime();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		System.out.println("dans le controller" + dateFormat.format(date1));
+		System.out.println("dans le controller" + dateFormat.format(date2));
+		createCamembert();
 	}
 
 	// Getters & Setters
@@ -68,6 +91,26 @@ public class VirementController {
 
 	public void setListeVirement(ArrayList<Virement> listeVirement) {
 		this.listeVirement = listeVirement;
+	}
+	
+	 public PieChartModel getCamembert() {
+	        return camembert;
+	    }
+	 
+	public Date getDate1() {
+		return date1;
+	}
+
+	public void setDate1(Date date1) {
+		this.date1 = date1;
+	}
+
+	public Date getDate2() {
+		return date2;
+	}
+
+	public void setDate2(Date date2) {
+		this.date2 = date2;
 	}
 
 	public String creerVirement() {
@@ -113,6 +156,21 @@ public class VirementController {
 		virement.setMontant(montant);
 		return "validationVirement";
 	}
+	
+	public String createCamembert() {
+        camembert = new PieChartModel();
+        ArrayList<Long> listeSection = virementService.getSectionPourCamembert(date1, date2);
+        camembert.set("entre 0 et 200€", listeSection.get(0));
+        camembert.set("entre 200 et 500€", listeSection.get(1));
+        camembert.set("entre 500 et 1000€", listeSection.get(2));
+        camembert.set("entre 1000 et 5000€", listeSection.get(3));
+        camembert.set("plus de 5000€", listeSection.get(4));
+
+        camembert.setTitle("Répartition du montant des virements effectués");
+        camembert.setLegendPosition("w");
+        
+        return "testRapportVirement";
+    }
 
 	public String getNumeroCompteDebiteur() {
 		return numeroCompteDebiteur;
