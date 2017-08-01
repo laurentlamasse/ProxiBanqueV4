@@ -1,7 +1,44 @@
-body {
+/* body#bodymain {
     font: 12px "Montserrat", sans-serif;
     line-height: 1.8;
     color: #004080;
+} */
+
+nav.navbar-default{
+	background-color: rgb(153, 179, 204);
+}
+
+nav.navbar-default .navbar-nav>.active>a, nav.navbar-default .navbar-nav>.active>a:focus, nav.navbar-default .navbar-nav>.active>a:hover{
+	background-color: rgb(129, 160, 192);
+	color: #004080;
+}
+
+nav.navbar-default .navbar-nav>li>a{
+	color: #004080;
+}
+
+nav.navbar-default .navbar-brand{
+	color: #004080;
+}
+
+h1.modif{
+	 color: #004080;
+}
+
+h3.modif{
+	color: #004080;
+}
+
+/* div.container{
+	padding-bot:140px;
+} */
+
+div#piedPage.container-fluid{
+	background-color: rgb(153, 179, 204);
+	position: fixed;
+	bottom: 0px;
+	color: #004080;
+	width: 100%;
 }
 
 .row {
@@ -12,7 +49,7 @@ body {
 
 .container {
     padding-top: 70px;
-    padding-bottom: 70px;
+    padding-bottom: 145px;
 }
 
 #titreFormulaire {

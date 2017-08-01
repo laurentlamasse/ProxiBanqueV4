@@ -9,37 +9,38 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 
-<ui:composition template="/template/layout.xhtml">
+<ui:composition template="/template/layoutGerant.xhtml">
 	<ui:define name="page_title">Rapport</ui:define>
 	<ui:define name="content">
 		<div class="container">
 			<div class="row">
-				<h1>Rapport sur les virements</h1>
+				<h1 class="modif">Rapport sur les virements</h1>
 				<hr />
 			</div>
 			<!--Corps de la page-->
 			<div class="row">
 				<div class=" col-md-6">
-					<h3>Répartition du montant des virements</h3>
+					<h3 class="modif">Répartition du montant des virements</h3>
 					<hr />
 					<p:chart id="camembert" type="pie"
 						model="#{virementController.camembert}"
-						style="width:500px;height:400px" />
+						style="width:400px;height:300px" />
 
 
 					<h:form>
 						<h:panelGrid id="panel" columns="2">
 
-							<p:outputLabel for="datedebut">A partir de : </p:outputLabel>
+							<p:outputLabel for="datedebut">  A partir de : </p:outputLabel>
 							<p:calendar id="datedebut" value="#{virementController.date1}" />
 
 
-							<p:outputLabel for="datefin">Jusqu'à: </p:outputLabel>
+							<p:outputLabel for="datefin">  Jusqu'à : </p:outputLabel>
 							<p:calendar id="datefin" value="#{virementController.date2}" />
 
 						</h:panelGrid>
+						<h1> </h1>
 						<div class="row" />
-						<div class="col-md-offset-4 col-md-2">
+						<div class="col-md-offset-7 col-md-2">
 							<p:commandButton value="Valider"
 								action="#{virementController.createCamembert}"
 								styleClass="btn btn-primary" process="@form" update="camembert" />
@@ -47,28 +48,28 @@
 					</h:form>
 				</div>
 				<div class=" col-md-6">
-					<h3>Historique des virements</h3>
+					<h3 class="modif">Historique des virements</h3>
 					<hr />
 					<h:form>
 						<p:dataTable var="virement"
-							value="#{virementController.listeVirement}" rows="10"
+							value="#{virementController.listeVirement}" rows="5"
 							paginator="true"
 							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 							rowsPerPageTemplate="5,10,15">
-							<p:column headerText="Date">
-								<h:outputText value="#{virement.date}" />
+							<p:column headerText="Date" >
+								<h:outputText value="#{virement.dateReduite}" />
 							</p:column>
 
-							<p:column headerText="Montant">
-								<h:outputText value="#{virement.montant}" />
+							<p:column headerText="Montant" >
+								<h:outputText value="#{virement.montant} €"  />
 							</p:column>
 
 							<p:column headerText="Numero du compte débité">
-								<h:outputText value="#{virement.compteDebite.numeroCompte}" />
+								<h:outputText value="n° #{virement.compteDebite.numeroCompte}" />
 							</p:column>
 
 							<p:column headerText="Numero du compte crédité">
-								<h:outputText value="#{virement.compteCredite.numeroCompte}" />
+								<h:outputText value="n° #{virement.compteCredite.numeroCompte}" />
 							</p:column>
 						</p:dataTable>
 					</h:form>

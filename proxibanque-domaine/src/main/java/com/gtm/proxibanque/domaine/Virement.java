@@ -1,5 +1,7 @@
 package com.gtm.proxibanque.domaine;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -83,6 +85,11 @@ public class Virement {
 
 	public Date getDate() {
 		return date;
+	}
+	
+	public String getDateReduite() {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		return dateFormat.format(date);
 	}
 
 	public void setDate(Date date) {

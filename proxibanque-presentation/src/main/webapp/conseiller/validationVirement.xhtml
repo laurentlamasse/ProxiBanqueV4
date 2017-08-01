@@ -18,13 +18,13 @@
 			
 		<div class="row">
 			<div class="col-md-10">
-				<h1>Récapitulatif du virement</h1>
+				<h1 class="modif">Récapitulatif du virement</h1>
 				<hr/>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-5">
-				<h3>Informations sur le virement</h3>
+				<h3 class="modif">Informations sur le virement</h3>
 				<hr/>
 				<p> Montant : #{virementController.montant}</p>
 				<p>Message : #{virementController.message}</p>
@@ -32,14 +32,14 @@
 		</div>
 		<div class="row">
 			<div class="col-md-5">
-				<h3>Compte débiteur</h3>
+				<h3 class="modif">Compte débiteur</h3>
 				<hr/>
 				<p>Client débiteur : #{virementController.compteDebiteur.proprietaire.nom} #{virementController.compteDebiteur.proprietaire.prenom}</p>
 				<p>Numéro du compte : #{virementController.compteDebiteur.numeroCompte}</p>
 				<p>Solde disponible : #{virementController.compteDebiteur.solde}</p>
 			</div>
 			<div class="col-md-5">
-				<h3>Compte créditeur</h3>
+				<h3 class="modif">Compte créditeur</h3>
 				<hr/>
 				<p>Client créditeur : #{virementController.compteCrediteur.proprietaire.nom} #{virementController.compteCrediteur.proprietaire.prenom}</p>
 				<p>Numéro du compte : #{virementController.compteCrediteur.numeroCompte}</p>

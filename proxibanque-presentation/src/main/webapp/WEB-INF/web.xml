@@ -23,7 +23,7 @@
 
 <!-- Securité à décommenter -->
 
- <!--  <security-constraint>
+<!--   <security-constraint>
        <web-resource-collection>
             <url-pattern>/conseiller/*</url-pattern>
        </web-resource-collection>
@@ -43,7 +43,7 @@
        <auth-method>FORM</auth-method>
        <form-login-config>
        <form-login-page>/login.jsp</form-login-page>
-       <form-error-page>/erreur.jsp</form-error-page>
+       <form-error-page>/home.jsp</form-error-page>
        </form-login-config>
 	</login-config>
  <security-role>

@@ -24,7 +24,7 @@
 	</bean>
 	
 	<!-- 1. Create datasource from JNDI DataSource provided by the container -->
-	<jee:jndi-lookup id="datasource" jndi-name="java:/MySqlDS" expected-type="javax.sql.DataSource" />
+	<jee:jndi-lookup id="datasource" jndi-name="java:/ProxibanqueDS" expected-type="javax.sql.DataSource" />
 	
 	<!-- <bean id="datasource" destroy-method="close"
 	class="org.apache.commons.dbcp2.BasicDataSource">

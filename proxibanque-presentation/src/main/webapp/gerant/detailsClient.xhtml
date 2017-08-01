@@ -17,7 +17,7 @@
         <!--Corps de la page-->
 		<div class="row">
                 <div class="col-md-12">
-                    <h1>Détails des comptes du client</h1>
+                    <h1 class="modif">Détails des comptes du client</h1>
                     <hr/>
                     <div id="client">
                         <p>Nom : #{clientController.client.prenom} #{clientController.client.nom}</p>
@@ -28,7 +28,7 @@
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    <h2>Compte Courant</h2>
+                    <h3 class="modif">Compte Courant</h3>
                     <hr/>
                     <div id="compte1">
                     	<h:panelGroup rendered="#{clientController.client.compteCourant !=null}">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="col-md-offset-1 col-md-5">
-                    <h2>Compte Epargne</h2>
+                    <h3 class="modif">Compte Epargne</h3>
                     <hr/>
                     <div id="compte2">
                        <h:panelGroup rendered="#{clientController.client.compteEpargne !=null}">
