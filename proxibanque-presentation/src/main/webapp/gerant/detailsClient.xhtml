@@ -36,7 +36,7 @@
                             <p>Découvert autorisé : #{clientController.client.compteCourant.decouvertAutorise}</p>
                             <p>Solde actuel : #{clientController.client.compteCourant.solde} €</p>
                     	<h:form>
-						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteCourant.numero)}" styleClass="btn btn-primary btn-sm" />
+						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteCourant.numeroCompte)}" styleClass="btn btn-primary btn-sm" />
 						</h:form>
 						</h:panelGroup>
 						<h:outputText value="Ce client ne possède pas de compte courant" rendered="#{clientController.client.compteCourant eq null}" />     
@@ -51,7 +51,7 @@
                             <p>Taux de rémunération : #{clientController.client.compteEpargne.tauxRemuneration}</p>
                             <p>Solde actuel : #{clientController.client.compteEpargne.solde} €</p>
                     	<h:form>
-						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteEpargne.numero)}" styleClass="btn btn-primary btn-sm" />
+						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteEpargne.numeroCompte)}" styleClass="btn btn-primary btn-sm" />
 						</h:form>
 						</h:panelGroup>
                         <h:outputText value="Ce client ne possède pas de compte épargne" rendered="#{clientController.client.compteEpargne eq null}" /> 
