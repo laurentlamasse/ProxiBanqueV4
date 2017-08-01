@@ -13,32 +13,64 @@
 	<ui:define name="page_title">Rapport</ui:define>
 	<ui:define name="content">
 		<div class="container">
+			<div class="row">
+				<h1>Rapport sur les virements</h1>
+				<hr />
+			</div>
 			<!--Corps de la page-->
 			<div class="row">
-				<div class="col-md-offset-1 col-md-5">
-					<p:chart id="camembert" type="pie" model="#{virementController.camembert}"
-						style="width:400px;height:300px" />
-				</div>
+				<div class=" col-md-6">
+					<h3>Répartition du montant des virements</h3>
+					<hr />
+					<p:chart id="camembert" type="pie"
+						model="#{virementController.camembert}"
+						style="width:500px;height:400px" />
 
-				<div class="col-md-6">
+
 					<h:form>
 						<h:panelGrid id="panel" columns="2">
 
-								<p:outputLabel for="datedebut">A partir de : </p:outputLabel>
-								<p:calendar id="datedebut" value="#{virementController.date1}" />
+							<p:outputLabel for="datedebut">A partir de : </p:outputLabel>
+							<p:calendar id="datedebut" value="#{virementController.date1}" />
 
 
-								<p:outputLabel for="datefin">Jusqu'à: </p:outputLabel>
-								<p:calendar id="datefin" value="#{virementController.date2}" />
-								
+							<p:outputLabel for="datefin">Jusqu'à: </p:outputLabel>
+							<p:calendar id="datefin" value="#{virementController.date2}" />
+
 						</h:panelGrid>
-						<div class="row"/>
+						<div class="row" />
 						<div class="col-md-offset-4 col-md-2">
 							<p:commandButton value="Valider"
 								action="#{virementController.createCamembert}"
-								styleClass="btn btn-primary"><f:ajax execute="@form" render="camembert" />
-								</p:commandButton>
+								styleClass="btn btn-primary" process="@form" update="camembert" />
 						</div>
+					</h:form>
+				</div>
+				<div class=" col-md-6">
+					<h3>Historique des virements</h3>
+					<hr />
+					<h:form>
+						<p:dataTable var="virement"
+							value="#{virementController.listeVirement}" rows="10"
+							paginator="true"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="5,10,15">
+							<p:column headerText="Date">
+								<h:outputText value="#{virement.date}" />
+							</p:column>
+
+							<p:column headerText="Montant">
+								<h:outputText value="#{virement.montant}" />
+							</p:column>
+
+							<p:column headerText="Numero du compte débité">
+								<h:outputText value="#{virement.compteDebite.numeroCompte}" />
+							</p:column>
+
+							<p:column headerText="Numero du compte crédité">
+								<h:outputText value="#{virement.compteCredite.numeroCompte}" />
+							</p:column>
+						</p:dataTable>
 					</h:form>
 				</div>
 			</div>

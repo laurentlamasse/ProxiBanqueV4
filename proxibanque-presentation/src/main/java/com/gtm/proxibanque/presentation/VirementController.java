@@ -133,7 +133,7 @@ public class VirementController {
 		return "validationVirement";
 	}
 	
-	public String createCamembert() {
+	public void createCamembert() {
         camembert = new PieChartModel();
         ArrayList<Long> listeSection = virementService.getSectionPourCamembert(date1, date2);
         camembert.set("entre 0 et 200€", listeSection.get(0));
@@ -142,10 +142,8 @@ public class VirementController {
         camembert.set("entre 1000 et 5000€", listeSection.get(3));
         camembert.set("plus de 5000€", listeSection.get(4));
 
-        camembert.setTitle("Répartition du montant des virements effectués");
         camembert.setLegendPosition("w");
         
-        return "testRapportVirement";
     }
 
 	public String getNumeroCompteDebiteur() {
