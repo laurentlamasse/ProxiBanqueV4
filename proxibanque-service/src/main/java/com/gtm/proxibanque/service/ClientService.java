@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.gtm.proxibanque.dao.IClientDao;
+import com.gtm.proxibanque.dao.ICompteDao;
 import com.gtm.proxibanque.dao.IGenericDao;
 import com.gtm.proxibanque.domaine.Client;
 import com.gtm.proxibanque.domaine.CompteCourant;
@@ -17,6 +18,10 @@ public class ClientService extends GenericService<Client> implements IClientServ
 	@Autowired
 	@Qualifier("clientDao")
 	private IClientDao dao;
+	
+	@Autowired
+	@Qualifier("compteDao")
+	private ICompteDao compteDao;
 	
 	@Override
 	public IGenericDao<Client> getDao() {
@@ -33,6 +38,28 @@ public class ClientService extends GenericService<Client> implements IClientServ
 			compteEpargne.setProprietaire(input);
 		return super.save(input);
 	}
-	
-	
+
+	public void deleteCompteCourant(Client client) {
+		if(client != null)
+		{
+			CompteCourant compte = client.getCompteCourant();
+			client.setCompteCourant(null);
+			dao.save(client);
+			if(compte != null)
+				compteDao.delete(compte);
+		}
+	}
+
+	public void deleteCompteEpargne(Client client) {
+		if(client != null)
+		{
+			CompteEpargne compte = client.getCompteEpargne();
+			client.setCompteEpargne(null);
+			dao.save(client);
+			if(compte != null)
+				compteDao.delete(compte);
+		}
+		
+	}
+
 }

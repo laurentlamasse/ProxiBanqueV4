@@ -8,6 +8,7 @@ public interface IGenericService<T> {
 	List<T> findAll();
 	T save(T input);
 	void delete(int id);
+	void delete(T input);
 	void deleteAll();
 	long count();
 }

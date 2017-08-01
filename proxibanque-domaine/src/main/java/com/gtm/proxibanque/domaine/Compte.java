@@ -29,7 +29,6 @@ public abstract class Compte {
 	private String numeroCompte;
 	private double solde;
 	@OneToOne
-	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Client proprietaire;
 	
 	//CONSTRUCTEURS
