@@ -29,6 +29,11 @@ public abstract class GenericService<T> implements IGenericService<T> {
 		getDao().delete(id);
 	}
 	
+	public void delete(T input)
+	{
+		getDao().delete(input);
+	}
+	
 	public void deleteAll() {
 		getDao().deleteAll();
 	}
