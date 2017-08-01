@@ -9,7 +9,13 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.PostConstruct;
 
 import com.gtm.proxibanque.domaine.Client;
+import com.gtm.proxibanque.domaine.CompteCourant;
+import com.gtm.proxibanque.domaine.CompteEpargne;
+import com.gtm.proxibanque.domaine.Conseiller;
 import com.gtm.proxibanque.service.ClientService;
+import com.gtm.proxibanque.service.interfaces.IClientService;
+import com.gtm.proxibanque.service.interfaces.ICompteService;
+import com.gtm.proxibanque.service.interfaces.IConseillerService;
 
 @Controller
 @Scope("session")
@@ -26,11 +32,11 @@ public class ClientController {
 	private double tauxCE;
 
 	@Autowired
-	private ClientService clientService;
+	private IClientService clientService;
 	@Autowired
-	private CompteService compteService;
-//	@Autowired
-//	private ConseillerService conseillerService;
+	private ICompteService compteService;
+	@Autowired
+	private IConseillerService conseillerService;
 
 	// Constructeur
 	public ClientController() {

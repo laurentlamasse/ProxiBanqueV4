@@ -9,4 +9,7 @@ import com.gtm.proxibanque.domaine.Compte;
 
 @Repository("compteDao")
 public interface ICompteDao extends IGenericDao<Compte>{
+	
+	public Compte findByNumeroCompte(String numeroCompte);
+	
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import com.gtm.proxibanque.domaine.Conseiller;
 import com.gtm.proxibanque.domaine.Gerant;
+import com.gtm.proxibanque.service.interfaces.IGerantService;
 
 @Controller
 @Scope("session")
@@ -20,7 +21,7 @@ public class GerantController {
 	private ArrayList<Conseiller> listeConseiller;
 
 	@Autowired
-	private GerantService gerantService;
+	private IGerantService gerantService;
 
 	// Constructeur
 	public GerantController() {
@@ -41,9 +42,9 @@ public class GerantController {
 		this.gerant = gerant;
 	}
 
-	public void setListeGerant(ArrayList<Gerant> listeGerant) {
-		this.listeConseiller = listeConseiller;
-	}
+//	public void setListeGerant(ArrayList<Gerant> listeGerant) {
+//		this.listeConseiller = listeConseiller;
+//	}
 
 	public String ajouterGerant() {
 		gerantService.initialiserListe(gerant);

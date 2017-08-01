@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 
 import com.gtm.proxibanque.domaine.Compte;
 import com.gtm.proxibanque.domaine.Virement;
+import com.gtm.proxibanque.service.interfaces.ICompteService;
+import com.gtm.proxibanque.service.interfaces.IVirementService;
 
 @Controller
 @Scope("session")
@@ -31,9 +33,9 @@ public class VirementController {
 	}
 
 	@Autowired
-	private CompteService compteService;
+	private ICompteService compteService;
 	@Autowired
-	private VirementService virementService;
+	private IVirementService virementService;
 
 	// Constructeur
 	public VirementController() {
@@ -74,14 +76,14 @@ public class VirementController {
 	public String choixCompteDebite(String numeroCompteDebiteur) {
 		this.numeroCompteDebiteur = numeroCompteDebiteur;
 		Compte compteDebiteur = compteService.trouverCompteAvecNumero(numeroCompteDebiteur);
-		virement.setCompteDebiteur(compteDebiteur);
+		virement.setCompteDebite(compteDebiteur);
 		return "compteCrediteVirement";
 	}
 
 	public String choixCompteCredite(String numeroCompteCrediteur) {
 		this.numeroCompteCrediteur = numeroCompteCrediteur;
 		Compte compteCrediteur = compteService.trouverCompteAvecNumero(numeroCompteCrediteur);
-		virement.setCompteCrediteur(compteCrediteur);
+		virement.setCompteCredite(compteCrediteur);
 		return "montantVirement";
 	}
 
@@ -106,19 +108,19 @@ public class VirementController {
 		this.numeroCompteCrediteur = numeroCompteCrediteur;
 	}
 
-	public CompteService getCompteService() {
+	public ICompteService getCompteService() {
 		return compteService;
 	}
 
-	public void setCompteService(CompteService compteService) {
+	public void setCompteService(ICompteService compteService) {
 		this.compteService = compteService;
 	}
 
-	public VirementService getVirementService() {
+	public IVirementService getVirementService() {
 		return virementService;
 	}
 
-	public void setVirementService(VirementService virementService) {
+	public void setVirementService(IVirementService virementService) {
 		this.virementService = virementService;
 	}
 }

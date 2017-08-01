@@ -22,33 +22,33 @@
 			<h:form styleClass="form-horizontal">
                 <div class="form-group">
                     <h:outputLabel for="nom">Nom : </h:outputLabel>
-		  			<h:inputText id="nom" required="true" requiredMessage="Veuillez entrer un nom" value="#{employeController.employe.nom}" a:placeholder="nom"/> 
+		  			<h:inputText id="nom" required="true" requiredMessage="Veuillez entrer un nom" value="#{employeController.conseiller.nom}" a:placeholder="nom"/> 
 		  			<h:message for = "nom" style = "color:red" />
                     
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="prenom">Prenom : </h:outputLabel>
-		  			<h:inputText id="prenom" required="true" requiredMessage="Veuillez entrer un prenom" value="#{employeController.employe.prenom}" a:placeholder="prenom"/> 
+		  			<h:inputText id="prenom" required="true" requiredMessage="Veuillez entrer un prenom" value="#{employeController.conseiller.prenom}" a:placeholder="prenom"/> 
 		  			<h:message for = "prenom" style = "color:red" />
                     
                 </div>
                 <div class="form-group">
                     <h:outputLabel for="login">Login : </h:outputLabel>
-		  			<h:inputText id="login" required="true" requiredMessage="Veuillez entrer un login" value="#{employeController.employe.login}" a:placeholder="login"/> 
+		  			<h:inputText id="login" required="true" requiredMessage="Veuillez entrer un login" value="#{employeController.conseiller.login}" a:placeholder="login"/> 
 		  			<h:message for = "login" style = "color:red" />
                 </div>
 
                 <div class="form-group">
                     <h:outputLabel for="password">Mot de passe : </h:outputLabel>
-		  			<h:inputSecret id="password" required="true" requiredMessage="Veuillez entrer un mot de passe" value="#{employeController.employe.password}" a:placeholder="mot de passe"/> 
+		  			<h:inputSecret id="password" required="true" requiredMessage="Veuillez entrer un mot de passe" value="#{employeController.conseiller.password}" a:placeholder="mot de passe"/> 
 		  			<h:message for = "password" style = "color:red" />
                     
                 </div>
                 <div class="col-md-offset-1 col-md-2">
-                    <h:commandButton value="Ajouter à la liste" action="#{employeController.creerEmploye}" styleClass="btn btn-primary"/>
+                    <h:commandButton value="Ajouter à la liste" action="#{employeController.ajouterConseiller}" styleClass="btn btn-primary"/>
                 </div>
                 <div class="col-md-offset-1 col-md-2">
-                    <h:link outcome="gestionClientBS" styleClass="btn btn-danger">Annuler</h:link>
+                    <h:link outcome="listeConseiller" styleClass="btn btn-danger">Annuler</h:link>
                 </div>
 			</h:form>
 	            

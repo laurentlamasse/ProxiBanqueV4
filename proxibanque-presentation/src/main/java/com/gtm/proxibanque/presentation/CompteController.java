@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import com.gtm.proxibanque.domaine.Compte;
 import com.gtm.proxibanque.domaine.CompteCourant;
 import com.gtm.proxibanque.domaine.CompteEpargne;
+import com.gtm.proxibanque.service.interfaces.ICompteService;
 
 @Controller
 @Scope("session")
@@ -24,7 +25,7 @@ public class CompteController {
 	private ArrayList<Compte> listeCompte;
 
 	@Autowired
-	private CompteService compteService;
+	private ICompteService compteService;
 
 	// Constructeur
 	public CompteController() {
@@ -74,14 +75,9 @@ public class CompteController {
 
 	public ArrayList<String> getListeNumeroCompte() {
 		ArrayList<String> listeNumero = (ArrayList<String>) compteService.listerComptes().stream()
-				.map(c -> c.getNumero()).sorted().collect(Collectors.toList());
+				.map(c -> c.getNumeroCompte()).sorted().collect(Collectors.toList());
 		return listeNumero;
 	}
-
-	public String ajouterCompte() {
-		compteService.creerCompte(compte);
-		return "gestionCompte";
-	}// TODO supprimer ajouterCompte() si inutile
 
 	public String ajouterCompteCourant() {
 		compteService.creerCompte(compteCourant);
