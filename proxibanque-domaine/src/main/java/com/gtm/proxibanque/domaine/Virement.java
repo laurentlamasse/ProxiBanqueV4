@@ -49,10 +49,11 @@ public class Virement {
 		this.message = virement.getMessage();
 	}
 
-	public Virement(Compte compteDebite, Compte compteCredite, double montant) {
+	public Virement(Compte compteDebite, Compte compteCredite, double montant, String message) {
 		this.setCompteCredite(compteCredite);
 		this.setCompteDebite(compteDebite);
 		this.setMontant(montant);
+		this.setMessage(message);
 	}
 
 	// ACCESSEURS ET MUTATEURS

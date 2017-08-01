@@ -67,25 +67,32 @@ public class ClientController {
 	}
 
 	public String ajouterClient() {
-		Client nouveauClient = clientService.creerClient(client);
+		Client clientCopie = new Client(client);
+		clientCopie = clientService.creerClient(clientCopie);
 		// TODO remplacer l'id en dur du conseiller
-		Conseiller conseiller = conseillerService.trouverConseiller(2);
-		conseiller.getListeClients().add(nouveauClient);
+		Conseiller conseiller = conseillerService.trouverConseiller(1);
+		conseiller.getListeClients().add(clientCopie);
 		conseillerService.modifierConseiller(conseiller);
 
 		if (selectCC) {
 			CompteCourant compte = new CompteCourant();
 			compte.setSolde(soldeCC);
 			compte.setDecouvertAutorise(decouvertCC);
-			compteService.creerCompte(compte);
+			compteService.creerCompte(compte, clientCopie);
 		}
+		clientCopie = clientService.findOne(clientCopie.getIdClient());
 		if (selectCE) {
 			CompteEpargne compte = new CompteEpargne();
 			compte.setSolde(soldeCE);
 			compte.setTauxRemuneration(tauxCE);
-			compteService.creerCompte(compte);
+			compteService.creerCompte(compte, clientCopie);
 		}
-		return "gestionClientBS";
+		return "listeClients";
+	}
+	
+	public String affichageClient(int idClient) {
+		client = clientService.findOne(idClient);
+		return "detailsClient";
 	}
 
 	public boolean isSelectCC() {

@@ -52,9 +52,12 @@
                 <div class="col-md-offset-1 col-md-3 text-justify well well-sm" id="wellConnexion">
                     <h3>Identifiez vous :</h3>
                     <br/>
-                    <h:form>
-                        <h:commandButton styleClass="btn btn-primary btn-block" value="Connexion" action="#{sessionController.login}"/>
-                    </h:form>
+                    <h:link styleClass="btn btn-primary btn-block" outcome="gerant/listeConseiller">Connexion en tant que gérant</h:link>
+                    <br/>
+                    <h:link styleClass="btn btn-primary btn-block" outcome="conseiller/listeClients">Connexion en tant que conseiller</h:link>
+                    <br/>
+                    <br/>
+                    <br/>    
                 </div>
             </div>
 			</div>

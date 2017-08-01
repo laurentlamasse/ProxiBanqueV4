@@ -79,13 +79,13 @@ public class CompteController {
 		return listeNumero;
 	}
 
-	public String ajouterCompteCourant() {
-		compteService.creerCompte(compteCourant);
-		return "gestionCompte";
-	}
-
-	public String ajouterCompteEpargne() {
-		compteService.creerCompte(compteEpargne);
-		return "gestionCompte";
-	}
+//	public String ajouterCompteCourant() {
+//		compteService.creerCompte(compteCourant);
+//		return "gestionCompte";
+//	}
+//
+//	public String ajouterCompteEpargne() {
+//		compteService.creerCompte(compteEpargne);
+//		return "gestionCompte";
+//	}
 }

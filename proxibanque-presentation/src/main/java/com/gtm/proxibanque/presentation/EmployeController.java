@@ -41,8 +41,9 @@ public class EmployeController {
 	}
 
 	public String ajouterConseiller() {
-		conseillerService.initialiserListe(conseiller);
-		conseillerService.creerConseiller(conseiller);
+		Conseiller conseillerCopie = new Conseiller(conseiller);
+		conseillerService.initialiserListe(conseillerCopie);
+		conseillerService.creerConseiller(conseillerCopie);
 		return "listeConseiller";
 	}
 
@@ -69,6 +70,7 @@ public class EmployeController {
 	}
 
 	public ArrayList<Conseiller> getListeConseiller() {
+		listeConseiller = (ArrayList<Conseiller>) conseillerService.listerConseillers();
 		return listeConseiller;
 	}
 

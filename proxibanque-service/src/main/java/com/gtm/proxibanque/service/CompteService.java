@@ -48,18 +48,18 @@ public class CompteService extends GenericService<Compte> implements ICompteServ
 	 * @param Compte
 	 *            - objet de type Compte a inserer en base
 	 */
-	public void creerCompte(CompteCourant compte) {
+	public void creerCompte(CompteCourant compte, Client client) {
 		// TODO : modifier la ligne suivante, c'est un test
-		Client client = clientDao.findOne(1);
+		//Client client = clientDao.findOne(1);
 		compte.setProprietaire(client);
 		compte.setNumeroCompte(genererNumeroCompte());
 		client.setCompteCourant(compte);
 		clientDao.save(client);
 	}
 
-	public void creerCompte(CompteEpargne compte) {
+	public void creerCompte(CompteEpargne compte, Client client) {
 		// TODO : modifier la ligne suivante, c'est un test
-		Client client = clientDao.findOne(1);
+		//Client client = clientDao.findOne(1);
 		compte.setProprietaire(client);
 		compte.setNumeroCompte(genererNumeroCompte());
 		client.setCompteEpargne(compte);
