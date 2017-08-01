@@ -1,0 +1,13 @@
+<security-domain name="ProxibanqueDBRealm">
+                    <authentication>
+                        <login-module code="org.jboss.security.auth.spi.DatabaseServerLoginModule" flag="required">
+                            <module-option name="dsJndiName" value="java:/ProxibanqueDS"/>
+                            <module-option name="principalsQuery" value="select password from employe where principal_id=?"/>
+                            <module-option name="rolesQuery" value="select FONCTION, 'Roles' from employe where  principal_id=?"/>
+                        </login-module>
+                        <login-module code="org.jboss.security.auth.spi.RoleMappingLoginModule" flag="optional">
+                            <module-option name="rolesProperties" value="${jboss.server.config.dir}/test-roles.properties"/>
+                            <module-option name="replaceRole" value="false"/>
+                        </login-module>
+                    </authentication>
+ </security-domain>
