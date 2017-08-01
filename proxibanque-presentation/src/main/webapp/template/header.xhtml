@@ -21,16 +21,15 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#container">Accueil</a></li>
-					<li><a href="conseillerListe">Gestion de conseillers</a></li>
-                    <li><a href="clientListe">Gestion de client</a></li>
+					<li><h:link outcome="listeConseiller">Gestion de conseillers</h:link></li>
+                    <li><h:link outcome="listeClients">Gestion de clients</h:link></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                    	<a class="nav-link disabled" href="#">Connecté en tant que <c:out value="${employeSession.prenom} ${employeSession.nom}"/></a>
-                        <a class="nav-link" href="employeLogin"><span class="glyphicon glyphicon-log-in"></span> Connexion</a>
+                    	<a class="nav-link disabled" href="#">Connecté en tant que quelqu'un</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="employeLogout">Logout</a>
+                        <h:link outcome="home">Logout</h:link>
                     </li>
                 </ul>
             </div>
