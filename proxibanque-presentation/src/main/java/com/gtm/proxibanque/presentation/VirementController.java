@@ -3,12 +3,9 @@ package com.gtm.proxibanque.presentation;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-<<<<<<< HEAD
 import java.util.stream.Collectors;
-=======
 import java.util.Calendar;
 import java.util.Date;
->>>>>>> 578f9bc3dcfac48e247bfbb3289430f3a6b4ef4a
 
 import javax.annotation.PostConstruct;
 
