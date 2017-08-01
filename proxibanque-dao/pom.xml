@@ -38,7 +38,7 @@
 				<groupId>org.hibernate.common</groupId>
 				<artifactId>hibernate-commons-annotations</artifactId>
 				<version>4.0.4.Final</version>
-			</dependency>
+			</dependency> 
 		</dependencies>
 	</dependencyManagement>
 	

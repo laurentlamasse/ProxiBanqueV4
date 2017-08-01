@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+>
+
+<ui:composition template="/template/layout.xhtml">
+    <ui:define name="page_title">Gestion des clients</ui:define>
+    <ui:define name="content">
+        <div class="container">
+        <!--Corps de la page-->
+		<div class="row">
+			<div class="col-md-offset-1 col-md-10">
+			            
+                <h1>Gestion de vos clients</h1>
+                <hr/>
+                <h:link styleClass="btn btn-primary" outcome="creationClient"><span class="fa fa-plus"> </span> Ajouter un client</h:link>
+
+                <br/>
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="#clients">Informations clients</a>
+                    </li>
+                    <li>
+                        <a data-toggle="tab" href="#comptes">Comptes bancaires</a>
+                    </li>
+                </ul>
+
+                <h:messages styleClass="messages" errorClass="invalid" infoClass="valid" warnClass="warning" globalOnly="false"/>
+				
+				<div class="tab-content">
+                    <div id="clients" class="tab-pane fade in active">
+                        <h:panelGroup rendered="#{empty clientBean.listeClient}">
+                            <em>Pas de clients.</em>
+                        </h:panelGroup>
+                        <h:dataTable var="c" value="#{clientBean.listeClient}" rendered="#{not empty clientController.listeClient}" styleClass="table table-hover">
+                            <h:column>
+                                <f:facet name="header">Nom</f:facet>
+                                #{c.nom}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Prénom</f:facet>
+                                #{c.prenom}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Email</f:facet>
+                                #{c.email}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Adresse</f:facet>
+                                #{c.adresse}
+                            </h:column>
+                            <!-- <h:column>
+                                <f:facet name="header">Actions</f:facet>
+                                <h:form>
+								   <h:commandLink value="Afficher" action="#{clientController.affichageClient(c.id)}" styleClass="btn btn-primary btn-sm" />
+								</h:form>
+                                <h:link value="" styleClass="btn btn-primary btn-sm"><i class="fa fa-pencil"> </i> Modifier</h:link>
+                                <h:form>
+								   <h:commandLink value="Supprimer" action="#{clientController.suppressionClient(c.id)}" styleClass="btn btn-danger btn-sm" />
+								</h:form>
+                            </h:column> -->
+                        </h:dataTable>
+                    </div>
+                    <div id="comptes" class="tab-pane fade">
+                        <h:panelGroup rendered="#{empty compteController.listeCompte}">
+                            <em>Pas de comptes.</em>
+                        </h:panelGroup>
+                        <h:dataTable var="c" value="#{compteController.listeCompte}" rendered="#{not empty compteController.listeCompte}" styleClass="table table-hover">
+                            <h:column>
+                                <f:facet name="header">Type</f:facet>
+                                Compte #{c.typeDeCompte}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Numéro</f:facet>
+                                #{c.numero}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Solde</f:facet>
+                                #{c.solde}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Propriétaire</f:facet>
+                                #{c.proprietaire.prenom} #{c.proprietaire.nom}
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Actions</f:facet>
+                                <h:form>
+								   <h:commandLink value="Effectuer un virement depuis ce compte" action="#{virementController.choixCompteDebite(c.numero)}" styleClass="btn btn-primary btn-sm" />
+								</h:form>
+                                <!-- <h:link value="" styleClass="btn btn-primary btn-sm"><i class="fa fa-edit"> </i> Afficher</h:link>
+                                <h:link value="" styleClass="btn btn-primary btn-sm"><i class="fa fa-pencil"> </i> Modifier</h:link>
+                                <h:link value="" styleClass="btn btn-danger btn-sm"><i class="fa fa-trash"> </i> Supprimer</h:link> -->
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+		</div>
+		
+		</div>
+        
+    </ui:define>
+</ui:composition>
+</html>

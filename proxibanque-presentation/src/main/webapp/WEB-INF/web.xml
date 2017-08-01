@@ -20,6 +20,7 @@
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
 
+
 <!-- Securité à décommenter -->
 
  <!--  <security-constraint>
@@ -52,7 +53,10 @@
  		<role-name>gerant</role-name>
  </security-role> -->
 
-
+	
+	<welcome-file-list>
+		<welcome-file>home.xhtml</welcome-file>
+	</welcome-file-list>
 
 
 	<listener>
