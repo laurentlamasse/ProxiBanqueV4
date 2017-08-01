@@ -61,7 +61,8 @@ public class VirementService extends GenericService<Virement> implements IVireme
 			decouvert = compteCourant.getDecouvertAutorise();
 			if (virement.getMontant() < (soldeCompte + decouvert)) {
 				effectuerVirement(virement);
-				dao.save(virement);
+				Virement virementCopie = new Virement(virement);
+				dao.save(virementCopie);
 				return true;
 			}
 		}
@@ -71,7 +72,8 @@ public class VirementService extends GenericService<Virement> implements IVireme
 			soldeCompte = compteEpargne.getSolde();
 			if (virement.getMontant() < soldeCompte) {
 				effectuerVirement(virement);
-				dao.save(virement);
+				Virement virementCopie = new Virement(virement);
+				dao.save(virementCopie);
 				return true;
 			}
 		}

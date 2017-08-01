@@ -13,11 +13,12 @@
 <ui:composition template="/template/layoutGerant.xhtml">
     <ui:define name="page_title">Virement</ui:define>
     <ui:define name="content">
-        <div class="container-fluid">
+        <div class="container">
         <!--Corps de la page-->
 		<div class="row">
                 <div class="col-md-12">
                     <h1>Détails des comptes du client</h1>
+                    <hr/>
                     <div id="client">
                         <p>Nom : #{clientController.client.prenom} #{clientController.client.nom}</p>
                         <p>Email : #{clientController.client.email}</p>
@@ -31,11 +32,11 @@
                     <hr/>
                     <div id="compte1">
                     	<h:panelGroup rendered="#{clientController.client.compteCourant !=null}">
-                            <p>Numéro de compte : #{clientController.client.compteCourant.numero}</p>
+                            <p>Numéro de compte : #{clientController.client.compteCourant.numeroCompte}</p>
                             <p>Découvert autorisé : #{clientController.client.compteCourant.decouvertAutorise}</p>
                             <p>Solde actuel : #{clientController.client.compteCourant.solde} €</p>
                     	<h:form>
-						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteCourant.numero)}" styleClass="btn btn-primary btn-sm" />
+						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteCourant.numeroCompte)}" styleClass="btn btn-primary btn-sm" />
 						</h:form>
 						</h:panelGroup>
 						<h:outputText value="Ce client ne possède pas de compte courant" rendered="#{clientController.client.compteCourant eq null}" />     
@@ -46,11 +47,11 @@
                     <hr/>
                     <div id="compte2">
                        <h:panelGroup rendered="#{clientController.client.compteEpargne !=null}">
-                            <p>Numéro de compte : #{clientController.client.compteEpargne.numero}</p>
+                            <p>Numéro de compte : #{clientController.client.compteEpargne.numeroCompte}</p>
                             <p>Taux de rémunération : #{clientController.client.compteEpargne.tauxRemuneration}</p>
                             <p>Solde actuel : #{clientController.client.compteEpargne.solde} €</p>
                     	<h:form>
-						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteEpargne.numero)}" styleClass="btn btn-primary btn-sm" />
+						    <h:commandLink value="Virement depuis ce compte" action="#{compteController.preparationVirement(clientController.client.compteEpargne.numeroCompte)}" styleClass="btn btn-primary btn-sm" />
 						</h:form>
 						</h:panelGroup>
                         <h:outputText value="Ce client ne possède pas de compte épargne" rendered="#{clientController.client.compteEpargne eq null}" /> 
@@ -61,7 +62,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1> </h1>
-					<h:link value="" outcome="listeClient" styleClass="btn btn-primary btn-sm">Retour</h:link>
+					<h:link value="" outcome="listeClients" styleClass="btn btn-primary btn-sm">Retour</h:link>
 				</div>
 			</div>
 		</div>

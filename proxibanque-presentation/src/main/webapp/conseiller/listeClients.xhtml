@@ -10,7 +10,7 @@
 	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 >
 
-<ui:composition template="/template/layout.xhtml">
+<ui:composition template="/template/layoutConseiller.xhtml">
     <ui:define name="page_title">Gestion des clients</ui:define>
     <ui:define name="content">
         <div class="container">
@@ -21,7 +21,7 @@
                 <h1>Gestion de vos clients</h1>
                 <hr/>
                 <h:link styleClass="btn btn-primary" outcome="creationClient"><span class="fa fa-plus"> </span> Ajouter un client</h:link>
-
+				<br/>
                 <br/>
                 <ul class="nav nav-tabs">
                     <li class="active">
@@ -36,10 +36,10 @@
 				
 				<div class="tab-content">
                     <div id="clients" class="tab-pane fade in active">
-                        <h:panelGroup rendered="#{empty clientBean.listeClient}">
+                        <h:panelGroup rendered="#{empty clientController.listeClient}">
                             <em>Pas de clients.</em>
                         </h:panelGroup>
-                        <h:dataTable var="c" value="#{clientBean.listeClient}" rendered="#{not empty clientController.listeClient}" styleClass="table table-hover">
+                        <h:dataTable var="c" value="#{clientController.listeClient}" rendered="#{not empty clientController.listeClient}" styleClass="table table-hover">
                             <h:column>
                                 <f:facet name="header">Nom</f:facet>
                                 #{c.nom}
@@ -56,16 +56,12 @@
                                 <f:facet name="header">Adresse</f:facet>
                                 #{c.adresse}
                             </h:column>
-                            <!-- <h:column>
-                                <f:facet name="header">Actions</f:facet>
-                                <h:form>
-								   <h:commandLink value="Afficher" action="#{clientController.affichageClient(c.id)}" styleClass="btn btn-primary btn-sm" />
+                            <h:column>
+                            	<f:facet name="header">Actions</f:facet>
+                            	<h:form>
+								   <h:commandLink value="Détails" action="#{clientController.affichageClient(c.idClient)}" styleClass="btn btn-primary btn-sm" />
 								</h:form>
-                                <h:link value="" styleClass="btn btn-primary btn-sm"><i class="fa fa-pencil"> </i> Modifier</h:link>
-                                <h:form>
-								   <h:commandLink value="Supprimer" action="#{clientController.suppressionClient(c.id)}" styleClass="btn btn-danger btn-sm" />
-								</h:form>
-                            </h:column> -->
+                            </h:column>
                         </h:dataTable>
                     </div>
                     <div id="comptes" class="tab-pane fade">
@@ -79,7 +75,7 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Numéro</f:facet>
-                                #{c.numero}
+                                #{c.numeroCompte}
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Solde</f:facet>
@@ -92,7 +88,7 @@
                             <h:column>
                                 <f:facet name="header">Actions</f:facet>
                                 <h:form>
-								   <h:commandLink value="Effectuer un virement depuis ce compte" action="#{virementController.choixCompteDebite(c.numero)}" styleClass="btn btn-primary btn-sm" />
+								   <h:commandLink value="Effectuer un virement depuis ce compte" action="#{virementController.choixCompteDebite(c.numeroCompte)}" styleClass="btn btn-primary btn-sm" />
 								</h:form>
                                 <!-- <h:link value="" styleClass="btn btn-primary btn-sm"><i class="fa fa-edit"> </i> Afficher</h:link>
                                 <h:link value="" styleClass="btn btn-primary btn-sm"><i class="fa fa-pencil"> </i> Modifier</h:link>
