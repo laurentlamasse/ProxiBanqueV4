@@ -79,11 +79,11 @@
 	
 	<error-page>
 		<error-code>404</error-code>
-		<location>/page404.xhtml</location>
+		<location>/erreur404.xhtml</location>
 	</error-page>
 	
 	<error-page>
 		<error-code>500</error-code>
-		<location>/page404.xhtml</location>
+		<location>/erreur500.xhtml</location>
 	</error-page>
 </web-app>
