@@ -28,8 +28,8 @@
 				<li><a class="nav-link disabled" href="#">Connecté en tant que #{loginController.employeEnSession.prenom} #{loginController.employeEnSession.nom}
 					</a></li>
 				<li class="nav-item">
-						<h:form id="logout">
-							<h:commandLink value="Logout" action="#{loginController.logout()}" styleClass="nav-link" />
+						<h:form>
+							<h:commandLink value="Logout" action="#{loginController.logout()}"/>
 						</h:form>
 				</li>
 			</ul>

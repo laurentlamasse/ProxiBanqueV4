@@ -28,11 +28,11 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/HeroesProjectWeb">ProxiBanque</a>
+				<a class="navbar-brand" href="#">ProxiBanque</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/home.xhtml">Accueil</a></li>
+					<li class="active"><a href="/Proxibanque/home.xhtml">Accueil</a></li>
 				</ul>
 			</div>
 		</div>

@@ -4,10 +4,26 @@
     color: #004080;
 } */
 
-form#logout{
-	color:#004080;
+.navbar-default .navbar-nav>li>form{
+    background-color: rgb(129, 160, 192);
 	padding-top:15px;
-	padding-bot:15px
+	padding-bottom:15px;
+	padding-right:20px;
+	padding-left:15px;
+	
+}
+
+.navbar-default .navbar-nav>li>form>a{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color:#004080;
+	font-size:14px;
+}
+
+.navbar-default .navbar-nav>li>form>a:hover{
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	color:black;
+	font-size:14px;
+	text-decoration : none;
 }
 	
 
@@ -18,6 +34,7 @@ nav.navbar-default{
 nav.navbar-default .navbar-nav>.active>a, nav.navbar-default .navbar-nav>.active>a:focus, nav.navbar-default .navbar-nav>.active>a:hover{
 	background-color: rgb(129, 160, 192);
 	color: #004080;
+	
 }
 
 nav.navbar-default .navbar-nav>li>a{

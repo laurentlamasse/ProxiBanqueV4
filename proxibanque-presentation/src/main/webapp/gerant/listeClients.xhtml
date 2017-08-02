@@ -61,7 +61,7 @@
                             	<h:form>
 								   <h:commandLink value="Détails" action="#{clientController.affichageClient(c.idClient)}" styleClass="btn btn-primary btn-sm" />
 								   <h:commandLink value="Modifier" action="#{clientController.modificationClient(c.idClient)}" styleClass="btn btn-info btn-sm" />
-								   <h:commandLink value="Supprimer" action="#{clientController.supprimerClient(c.idClient)}" styleClass="btn btn-danger btn-sm" />
+								   <h:commandLink value="Supprimer" action="#{clientController.supprimerClientGerant(c.idClient)}" styleClass="btn btn-danger btn-sm" />
 								</h:form>
                             </h:column>
                         </h:dataTable>
