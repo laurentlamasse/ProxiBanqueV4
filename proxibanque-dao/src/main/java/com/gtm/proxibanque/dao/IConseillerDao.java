@@ -11,4 +11,5 @@ import com.gtm.proxibanque.domaine.Conseiller;
 @Repository("conseillerDao")
 public interface IConseillerDao extends IGenericDao<Conseiller>{
 
+	public Conseiller getConseillerByLogin(String login);
 }

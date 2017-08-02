@@ -4,6 +4,13 @@
     color: #004080;
 } */
 
+form#logout{
+	color:#004080;
+	padding-top:15px;
+	padding-bot:15px
+}
+	
+
 nav.navbar-default{
 	background-color: rgb(153, 179, 204);
 }

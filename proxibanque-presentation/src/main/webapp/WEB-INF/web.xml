@@ -23,7 +23,7 @@
 
 <!-- Securité à décommenter -->
 
-<!--   <security-constraint>
+  <security-constraint>
        <web-resource-collection>
             <url-pattern>/conseiller/*</url-pattern>
        </web-resource-collection>
@@ -51,7 +51,7 @@
  </security-role>
  <security-role>
  		<role-name>gerant</role-name>
- </security-role> -->
+ </security-role>
 
 	
 	<welcome-file-list>
