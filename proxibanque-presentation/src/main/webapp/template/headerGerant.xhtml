@@ -5,6 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
 >
 
 <ui:composition>
@@ -28,10 +29,12 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                    	<a class="nav-link disabled" href="#">Connecté en tant que quelqu'un</a>
+                    	<a class="nav-link disabled" href="#">Connecté en tant que Gérant</a>
                     </li>
                     <li class="nav-item">
-                        <h:link outcome="/home">Logout</h:link>
+                    	<h:form id="logout">
+                          <h:commandLink value="Logout" action="#{loginController.logout()}" styleClass="nav-link"/>
+                        </h:form>
                     </li>
                 </ul>
             </div>

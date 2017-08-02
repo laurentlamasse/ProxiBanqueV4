@@ -11,5 +11,5 @@ public interface IConseillerService extends IGenericService<Conseiller>{
 	public List<Conseiller> listerConseillers();
 	public void creerConseiller(Conseiller conseiller);
 	public void initialiserListe(Conseiller conseiller);
-	
+	public Conseiller trouverConseillerParLogin(String login);
 }
