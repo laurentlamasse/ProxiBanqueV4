@@ -4,11 +4,24 @@
 "http://logging.apache.org/log4j/docs/api/org/apache/log4j/xml/log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.SimpleLayout" />
 	</appender>
+	
+	<appender name="default.file" class="org.apache.log4j.FileAppender">
+        <param name="file" value="/log/virement.log" />
+        <param name="append" value="true" />
+        <param name="threshold" value="warn" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} [%c{1}] - %m%n" />
+        </layout>
+    </appender>
+	
 	<root>
 		<level value="info" />
-		<appender-ref ref="console" />
+		<appender-ref ref="console"/>
+		<appender-ref ref="default.file" />
 	</root>
+	
 </log4j:configuration>

@@ -47,6 +47,14 @@ public class EmployeController {
 		return "listeConseiller";
 	}
 
+	public String supprimerConseiller(int id) {
+		conseiller = conseillerService.findOne(id);
+		if(conseiller.getListeClients().isEmpty()) {
+			conseillerService.delete(id);
+		}
+		return "listeConseiller";
+	}
+	
 	public String ajouterGerant() {
 		gerantService.initialiserListe(gerant);
 		gerantService.creerGerant(gerant);

@@ -59,6 +59,15 @@ public class ClientController {
 	public void setClient(Client Client) {
 		this.client = Client;
 	}
+	
+	public ArrayList<Client> getListeClientConseiller() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
+                .getExternalContext().getRequest();
+		String login = request.getRemoteUser();
+		Conseiller conseiller = conseillerService.trouverConseillerParLogin(login);
+		ArrayList<Client> listeTemp = new ArrayList<Client>(conseiller.getListeClients());
+		return listeTemp;		
+	}
 
 	public ArrayList<Client> getListeClient() {
 		return (ArrayList<Client>) clientService.listerClients();
@@ -95,6 +104,7 @@ public class ClientController {
 		return "listeClients";
 	}
 	
+
 	public String modifierClient(int idClient) {
 		client = clientService.findOne(idClient); 
 		client = clientService.creerClient(client);
@@ -112,6 +122,11 @@ public class ClientController {
 			compte.setTauxRemuneration(tauxCE);
 			compteService.creerCompte(compte, client);
 		}
+		return "listeClients";
+		}
+		
+	public String supprimerClient(int id) {
+		clientService.delete(id);
 		return "listeClients";
 	}
 	

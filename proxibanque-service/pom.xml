@@ -6,7 +6,7 @@
 		<artifactId>proxibanque</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	
+
 	<groupId>com.gtm</groupId>
 	<artifactId>proxibanque-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -15,9 +15,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
+
 	<dependencies>
-	
+
 		<!-- PROXIBANQUE -->
 		<dependency>
 			<groupId>com.gtm</groupId>
@@ -41,13 +41,42 @@
 			<artifactId>spring-aop</artifactId>
 			<version>4.3.10.RELEASE</version>
 		</dependency>
-		 
+
+		<!-- AOP -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>4.3.10.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.1_3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+
+
+
 		<!-- JUNIT -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>3.8.1</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- LOG4J -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
 		</dependency>
 	</dependencies>
 </project>

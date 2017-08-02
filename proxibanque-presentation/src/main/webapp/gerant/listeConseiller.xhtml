@@ -11,7 +11,7 @@
 >
 
 <ui:composition template="/template/layoutGerant.xhtml">
-    <ui:define name="page_title">Gestion des clients</ui:define>
+    <ui:define name="page_title">Gestion des conseillers</ui:define>
     <ui:define name="content">
         <div class="container">
         <!--Corps de la page-->
@@ -35,6 +35,12 @@
                     <h:column>
                         <f:facet name="header">Login</f:facet>
                         #{c.login}
+                    </h:column>
+                    <h:column>
+                    	<f:facet name="header">Actions</f:facet>
+                    	<h:form>
+                    		<h:commandLink value="Supprimer" action="#{employeController.supprimerConseiller(c.idEmploye)}" styleClass="btn btn-danger btn-sm"/>
+                    	</h:form>
                     </h:column>
                 </h:dataTable>
                 
