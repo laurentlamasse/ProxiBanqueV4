@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import com.gtm.proxibanque.domaine.Client;
 import com.gtm.proxibanque.domaine.CompteCourant;
@@ -69,8 +71,11 @@ public class ClientController {
 	public String ajouterClient() {
 		Client clientCopie = new Client(client);
 		clientCopie = clientService.creerClient(clientCopie);
-		// TODO remplacer l'id en dur du conseiller
-		Conseiller conseiller = conseillerService.trouverConseiller(1);
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
+                .getExternalContext().getRequest();
+		String login = request.getRemoteUser();
+		int id = conseillerService.trouverConseillerParLogin(login).getIdEmploye();
+		Conseiller conseiller = conseillerService.trouverConseiller(id);
 		conseiller.getListeClients().add(clientCopie);
 		conseillerService.modifierConseiller(conseiller);
 
