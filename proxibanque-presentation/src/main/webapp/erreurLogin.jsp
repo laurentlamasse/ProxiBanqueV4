@@ -28,42 +28,18 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">ProxiBanque</a>
+				<a class="navbar-brand" href="/HeroesProjectWeb">ProxiBanque</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="/Proxibanque/home.xhtml">Accueil</a></li>
+					<li class="active"><a href="/home.xhtml">Accueil</a></li>
 				</ul>
 			</div>
 		</div>
 		</nav>
 
-		<div class="row" id="titreFormulaire">
-			<h3>Connexion en tant que gérant</h3>
-			<form class="form-horizontal" action="j_security_check" method="POST">
-				<div class="form-group">
-					<label class="control-label col-sm-4">Login : </label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control" name="j_username">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-4">Mot de passe :
-					</label>
-					<div class="col-sm-4">
-						<input type="password" class="form-control" id="nom" name="j_password">
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-2">
-						<button type="submit" class="btn btn-default">Connexion</button>
-					</div>
-					<div class="col-sm-offset-1 col-sm-2">
-						<button type="reset" class="btn btn-danger">Effacer</button>
-					</div>
-				</div>
-			</form>
+		<div class="row">
+			<h1>Echec de l'authentification et/ou de l'autorisation</h1>
 		</div>
 
 	</div>

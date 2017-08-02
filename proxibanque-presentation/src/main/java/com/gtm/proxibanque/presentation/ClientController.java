@@ -105,8 +105,8 @@ public class ClientController {
 	}
 	
 
-	public String modifierClient(int idClient) {
-		client = clientService.findOne(idClient); 
+	public String modifierClient() {
+		//client = clientService.findOne(idClient); 
 		client = clientService.creerClient(client);
 
 		if (selectCC) {
@@ -125,14 +125,29 @@ public class ClientController {
 		return "listeClients";
 		}
 		
-	public String supprimerClient(int id) {
-		clientService.delete(id);
+	public String supprimerClient(int idClient) {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
+                .getExternalContext().getRequest();
+		String login = request.getRemoteUser();
+		int idConseiller = conseillerService.trouverConseillerParLogin(login).getIdEmploye();
+		Conseiller conseiller = conseillerService.trouverConseiller(idConseiller);
+		client = clientService.findOne(idClient);
+		//TODO remove ne fonctionne pas
+		//conseiller.getListeClients().remove(client);
+		conseillerService.updateConseiller(conseiller);
+		clientService.delete(idClient);
+		
 		return "listeClients";
 	}
 	
 	public String affichageClient(int idClient) {
 		client = clientService.findOne(idClient);
 		return "detailsClient";
+	}
+	
+	public String modificationClient(int idClient) {
+		client = clientService.findOne(idClient);
+		return "modificationClient";
 	}
 
 	public boolean isSelectCC() {

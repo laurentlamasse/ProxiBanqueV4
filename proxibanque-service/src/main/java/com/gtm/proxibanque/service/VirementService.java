@@ -35,6 +35,15 @@ public class VirementService extends GenericService<Virement> implements IVireme
 		return dao;
 	}
 
+	public VirementService() {
+		
+	}
+	
+	public VirementService(IVirementDao daoVirement, ICompteDao daoCompte) {
+		this.dao = daoVirement;
+		this.compteDao = daoCompte;
+	}
+	
 	/**
 	 * Recupere via la DAO une List contenant tous les Comptes enregistres en base.
 	 *

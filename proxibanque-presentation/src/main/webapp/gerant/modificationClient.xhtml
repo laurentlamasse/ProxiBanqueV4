@@ -16,7 +16,7 @@
         <div class="container">
         <!--Corps de la page-->
 		<div class="row">
-			<h1>Nouveau client</h1>
+			<h1 class="modif">Modification du Client #{clientController.client.prenom} #{clientController.client.nom}</h1>
 			<hr />
 	            <h:form styleClass="form-horizontal">
 	                <div class="form-group">
@@ -43,7 +43,11 @@
 			  			<h:message for = "email" style = "color:red" />
 	                    
 	                </div>
+	          <h1 class="modif">Ouverture d'un compte pour le Client #{clientController.client.prenom} #{clientController.client.nom}</h1>
+			<hr />      
 	                <div class="form-group">
+	                <h:outputText value="Ce client possède déjà un compte courant" rendered="#{clientController.client.compteCourant != null}" /> 
+	                <h:panelGroup rendered="#{clientController.client.compteCourant eq null}">
 	                    <div class="col-md-2">
 		                    <h:selectBooleanCheckbox id="compteCourant" value="#{clientController.selectCC}"/>
 		                    <h:outputLabel value="Compte courant" for="compteCourant"/>
@@ -58,8 +62,11 @@
 				  			<h:inputText id="decouvertCC" required="true" requiredMessage="Veuillez entrer un decouvert" value="#{clientController.decouvertCC}" a:placeholder="decouvert"/> 
 				  			<h:message for = "decouvertCC" style = "color:red" />
 	                    </div>
+	                </h:panelGroup>
 	                </div>
 	                <div class="form-group">
+	                <h:outputText value="Ce client possède déjà un compte épargne" rendered="#{clientController.client.compteEpargne != null}" />
+	                <h:panelGroup rendered="#{clientController.client.compteEpargne eq null}"> 
 	                	<div class="col-md-2">
 		                    <h:selectBooleanCheckbox id="compteEpargne" value="#{clientController.selectCE}"/>
 		                    <h:outputLabel value="Compte épargne" for="compteEpargne"/>
@@ -74,9 +81,10 @@
 				  			<h:inputText id="TauxCE" required="true" requiredMessage="Veuillez entrer un taux de rémunération" value="#{clientController.tauxCE}" a:placeholder="taux"/> 
 				  			<h:message for = "TauxCE" style = "color:red" />
 	                    </div>
+	                </h:panelGroup>
 	                </div>
 	                <div class="col-md-offset-1 col-md-2">
-	                    <h:commandButton value="Ajouter à la liste" action="#{clientController.ajouterClient}" styleClass="btn btn-primary"/>
+	                    <h:commandButton value="Modifier" action="#{clientController.modifierClient}" styleClass="btn btn-primary"/>
 	                </div>
 	                <div class="col-md-offset-1 col-md-2">
 	                    <h:link outcome="listeClients" styleClass="btn btn-danger">Annuler</h:link>
