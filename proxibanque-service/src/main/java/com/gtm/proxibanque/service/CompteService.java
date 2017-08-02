@@ -17,6 +17,12 @@ import com.gtm.proxibanque.domaine.CompteCourant;
 import com.gtm.proxibanque.domaine.CompteEpargne;
 import com.gtm.proxibanque.service.interfaces.ICompteService;
 
+/**
+ * Classe implementant l'interface ICompteService et heritant de
+ * GenericService<Compte> Cette classe fournit les methodes du service lie a la
+ * gestion des comptes.
+ *
+ */
 @Service("compteService")
 public class CompteService extends GenericService<Compte> implements ICompteService {
 
@@ -43,29 +49,44 @@ public class CompteService extends GenericService<Compte> implements ICompteServ
 	}
 
 	/**
-	 * Insere via la DAO un Compte en base.
+	 * Insere via la DAO un Compte Courant en base.
 	 *
-	 * @param Compte
-	 *            - objet de type Compte a inserer en base
+	 * @param compte
+	 *            - objet de type CompteCourant a inserer en base
+	 * @param client
+	 *            - client a qui on assigne le compte
+	 * 
 	 */
 	public void creerCompte(CompteCourant compte, Client client) {
 		// TODO : modifier la ligne suivante, c'est un test
-		//Client client = clientDao.findOne(1);
+		// Client client = clientDao.findOne(1);
 		compte.setProprietaire(client);
 		compte.setNumeroCompte(genererNumeroCompte());
 		client.setCompteCourant(compte);
 		clientDao.save(client);
 	}
 
+	/**
+	 * Insere via la DAO un Compte Epargne en base.
+	 *
+	 * @param compte
+	 *            - objet de type CompteEpargne a inserer en base
+	 * 
+	 * @param client
+	 *            - client a qui on assigne le compte
+	 */
 	public void creerCompte(CompteEpargne compte, Client client) {
 		// TODO : modifier la ligne suivante, c'est un test
-		//Client client = clientDao.findOne(1);
+		// Client client = clientDao.findOne(1);
 		compte.setProprietaire(client);
 		compte.setNumeroCompte(genererNumeroCompte());
 		client.setCompteEpargne(compte);
 		clientDao.save(client);
 	}
 
+	/**
+	 * Methode qui genere automatiquement un numero de compte de format [3000 ....]
+	 */
 	public String genererNumeroCompte() {
 
 		// variable en retour
@@ -115,6 +136,9 @@ public class CompteService extends GenericService<Compte> implements ICompteServ
 		return nSuivantString;
 	}
 
+	/**
+	 * Recupere un compte de la base de donnees a partir de son numero
+	 */
 	public Compte trouverCompteAvecNumero(String numero) {
 		return compteDao.findByNumeroCompte(numero);
 	}

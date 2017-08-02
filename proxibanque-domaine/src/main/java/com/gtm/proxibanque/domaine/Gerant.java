@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Represente un Gerant, cette classe herite de la classe Employe.<br />
  * Un Gerant possede les attributs suivants :<br />
- * - List<Gerant> listeGerants : relation OneToMany<br />
+ * - List<Conseiller> listeConseillers : relation OneToMany<br />
  */
 @Entity
 @DiscriminatorValue("gerant")

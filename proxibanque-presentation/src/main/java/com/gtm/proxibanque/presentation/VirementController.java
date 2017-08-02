@@ -19,6 +19,15 @@ import com.gtm.proxibanque.domaine.Virement;
 import com.gtm.proxibanque.service.interfaces.ICompteService;
 import com.gtm.proxibanque.service.interfaces.IVirementService;
 
+/**
+ * Classe Bean qui sera instancie par JSF et sera initialise a partir des
+ * informations founies par la page JSF (exemple : les valeurs des champs d'un
+ * formulaire). Cette classe permet la gestion du binding c'est a dire le
+ * branchement entre l'univers web et l'univers java.
+ * 
+ * VirementController injecte 2 services utilises pour la gestion des virements
+ * : - ICompteService compteService - IVirementService virementService
+ */
 @Controller
 @Scope("session")
 public class VirementController {
@@ -37,7 +46,7 @@ public class VirementController {
 	private Date date2;
 	private Calendar c1;
 	private Calendar c2;
-	
+
 	public double getMontant() {
 		return montant;
 	}
@@ -53,8 +62,12 @@ public class VirementController {
 
 	// Constructeur
 	public VirementController() {
-		}
+	}
 
+	/**
+	 * Methode d'initialisation appelee automatiquement apres l'instanciation de la
+	 * classe VirementController.
+	 */
 	@PostConstruct
 	public void init() {
 		virement = new Virement();
@@ -89,11 +102,11 @@ public class VirementController {
 	public void setListeVirement(ArrayList<Virement> listeVirement) {
 		this.listeVirement = listeVirement;
 	}
-	
-	 public PieChartModel getCamembert() {
-	        return camembert;
-	    }
-	 
+
+	public PieChartModel getCamembert() {
+		return camembert;
+	}
+
 	public Date getDate1() {
 		return date1;
 	}
@@ -110,20 +123,38 @@ public class VirementController {
 		this.date2 = date2;
 	}
 
+	/**
+	 * Cree un virement entre 2 comptes et l'enregistre en base de donnees
+	 * 
+	 * @return
+	 */
 	public String creerVirement() {
-//		Compte compteDebiteur = compteService.trouverCompteAvecNumero(numeroCompteDebiteur);
-//		Compte compteCrediteur = compteService.trouverCompteAvecNumero(numeroCompteCrediteur);
+		// Compte compteDebiteur =
+		// compteService.trouverCompteAvecNumero(numeroCompteDebiteur);
+		// Compte compteCrediteur =
+		// compteService.trouverCompteAvecNumero(numeroCompteCrediteur);
 		Virement virement = new Virement(compteDebiteur, compteCrediteur, montant, message);
 		virementService.createVirement(virement);
 		return "listeClients";
 	}
-	
+
+	/**
+	 * Verifie si le virement est possible entre les 2 comptes.
+	 * 
+	 * @return
+	 */
 	public String verificationVirement() {
 		compteDebiteur = compteService.trouverCompteAvecNumero(numeroCompteDebiteur);
 		compteCrediteur = compteService.trouverCompteAvecNumero(numeroCompteCrediteur);
 		return "validationVirement";
 	}
 
+	/**
+	 * Permet de choisir le compte debiteur
+	 * 
+	 * @param numeroCompteDebiteur
+	 * @return
+	 */
 	public String choixCompteDebite(String numeroCompteDebiteur) {
 		this.numeroCompteDebiteur = numeroCompteDebiteur;
 		Compte compteDebiteur = compteService.trouverCompteAvecNumero(numeroCompteDebiteur);
@@ -131,18 +162,30 @@ public class VirementController {
 		return "preparationVirement";
 	}
 
+	/**
+	 * Permet de choisir le compte crediteur
+	 * 
+	 * @param numeroCompteCrediteur
+	 * @return
+	 */
 	public String choixCompteCredite(String numeroCompteCrediteur) {
 		this.numeroCompteCrediteur = numeroCompteCrediteur;
 		Compte compteCrediteur = compteService.trouverCompteAvecNumero(numeroCompteCrediteur);
 		virement.setCompteCredite(compteCrediteur);
 		return "montantVirement";
 	}
-	
+
+	/**
+	 * Recupere la liste des numeros de comptes
+	 * 
+	 * @return
+	 */
 	public ArrayList<String> getListeNumeroCompte() {
-		ArrayList<String> listeNumero = (ArrayList<String>) compteService.listerComptes().stream().map(c->c.getNumeroCompte()).sorted().collect(Collectors.toList());
+		ArrayList<String> listeNumero = (ArrayList<String>) compteService.listerComptes().stream()
+				.map(c -> c.getNumeroCompte()).sorted().collect(Collectors.toList());
 		String numero = "";
-		for(String s : listeNumero) {
-			if(s.equals(numeroCompteDebiteur))
+		for (String s : listeNumero) {
+			if (s.equals(numeroCompteDebiteur))
 				numero = s;
 		}
 		listeNumero.remove(numero);
@@ -153,19 +196,22 @@ public class VirementController {
 		virement.setMontant(montant);
 		return "validationVirement";
 	}
-	
-	public void createCamembert() {
-        camembert = new PieChartModel();
-        ArrayList<Long> listeSection = virementService.getSectionPourCamembert(date1, date2);
-        camembert.set("entre 0 et 200€", listeSection.get(0));
-        camembert.set("entre 200 et 500€", listeSection.get(1));
-        camembert.set("entre 500 et 1000€", listeSection.get(2));
-        camembert.set("entre 1000 et 5000€", listeSection.get(3));
-        camembert.set("plus de 5000€", listeSection.get(4));
 
-        camembert.setLegendPosition("w");
-        
-    }
+	/**
+	 * Methode qui cree un diagramme circulaire sur les virements
+	 */
+	public void createCamembert() {
+		camembert = new PieChartModel();
+		ArrayList<Long> listeSection = virementService.getSectionPourCamembert(date1, date2);
+		camembert.set("entre 0 et 200€", listeSection.get(0));
+		camembert.set("entre 200 et 500€", listeSection.get(1));
+		camembert.set("entre 500 et 1000€", listeSection.get(2));
+		camembert.set("entre 1000 et 5000€", listeSection.get(3));
+		camembert.set("plus de 5000€", listeSection.get(4));
+
+		camembert.setLegendPosition("w");
+
+	}
 
 	public String getNumeroCompteDebiteur() {
 		return numeroCompteDebiteur;

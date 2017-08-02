@@ -19,6 +19,16 @@ import com.gtm.proxibanque.service.interfaces.IClientService;
 import com.gtm.proxibanque.service.interfaces.ICompteService;
 import com.gtm.proxibanque.service.interfaces.IConseillerService;
 
+/**
+ * Classe Bean qui sera instancie par JSF et sera initialise a partir des
+ * informations founies par la page JSF (exemple : les valeurs des champs d'un
+ * formulaire). Cette classe permet la gestion du binding c'est a dire le
+ * branchement entre l'univers web et l'univers java.
+ * 
+ * ClientController injecte 3 services utilises pour la gestion des clients : -
+ * IClientService clientService - ICompteService compteService -
+ * IConseillerService conseillerService
+ */
 @Controller
 @Scope("session")
 public class ClientController {
@@ -42,8 +52,12 @@ public class ClientController {
 
 	// Constructeur
 	public ClientController() {
-		}
+	}
 
+	/**
+	 * Methode d'initialisation appelee automatiquement apres l'instanciation de la
+	 * classe ClientController.
+	 */
 	@PostConstruct
 	public void init() {
 		client = new Client();
@@ -59,14 +73,19 @@ public class ClientController {
 	public void setClient(Client Client) {
 		this.client = Client;
 	}
-	
+
+	/**
+	 * Recupere la liste des clients pour le conseiller authentifie.
+	 * 
+	 * @return
+	 */
 	public ArrayList<Client> getListeClientConseiller() {
-		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
-                .getExternalContext().getRequest();
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
 		String login = request.getRemoteUser();
 		Conseiller conseiller = conseillerService.trouverConseillerParLogin(login);
 		ArrayList<Client> listeTemp = new ArrayList<Client>(conseiller.getListeClients());
-		return listeTemp;		
+		return listeTemp;
 	}
 
 	public ArrayList<Client> getListeClient() {
@@ -77,11 +96,17 @@ public class ClientController {
 		this.listeClient = listeClient;
 	}
 
+	/**
+	 * Permet d'enregistrer un client dans la base de donnees et de l'assigner au
+	 * conseiller connecte.
+	 * 
+	 * @return
+	 */
 	public String ajouterClient() {
 		Client clientCopie = new Client(client);
 		clientCopie = clientService.creerClient(clientCopie);
-		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
-                .getExternalContext().getRequest();
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
 		String login = request.getRemoteUser();
 		int id = conseillerService.trouverConseillerParLogin(login).getIdEmploye();
 		Conseiller conseiller = conseillerService.trouverConseiller(id);
@@ -103,10 +128,14 @@ public class ClientController {
 		}
 		return "listeClients";
 	}
-	
 
+	/**
+	 * Permet de mettre a jour le client au sein de la base de donnees
+	 * 
+	 * @return
+	 */
 	public String modifierClient(int idClient) {
-		client = clientService.findOne(idClient); 
+		client = clientService.findOne(idClient);
 		client = clientService.creerClient(client);
 
 		if (selectCC) {
@@ -123,13 +152,24 @@ public class ClientController {
 			compteService.creerCompte(compte, client);
 		}
 		return "listeClients";
-		}
-		
+	}
+
+	/**
+	 * Permet de supprimer le client de la base de donnees
+	 * @param id
+	 * Identifiant (cle primaire) du client
+	 * @return
+	 */
 	public String supprimerClient(int id) {
 		clientService.delete(id);
 		return "listeClients";
 	}
-	
+
+	/**
+	 * Affiche les informations lie a un client
+	 * @param idClient Identifiant du client a afficher
+	 * @return
+	 */
 	public String affichageClient(int idClient) {
 		client = clientService.findOne(idClient);
 		return "detailsClient";

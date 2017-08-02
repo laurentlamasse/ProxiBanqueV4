@@ -14,6 +14,12 @@ import com.gtm.proxibanque.domaine.CompteCourant;
 import com.gtm.proxibanque.domaine.CompteEpargne;
 import com.gtm.proxibanque.service.interfaces.IClientService;
 
+/**
+ * Classe implementant l'interface IClientService et heritant de
+ * GenericService<Client> Cette classe fournit les methodes du service lie a la
+ * gestion des clients.
+ *
+ */
 @Service("clientService")
 public class ClientService extends GenericService<Client> implements IClientService {
 
@@ -30,6 +36,13 @@ public class ClientService extends GenericService<Client> implements IClientServ
 		return dao;
 	}
 
+	/**
+	 * Methode pour l'insertion ou la mise a jour d'un compte dans la base de
+	 * donnees
+	 * 
+	 * @param input
+	 *            Client a qui on souhaite ajouter un compte.
+	 */
 	@Override
 	public Client save(Client input) {
 		CompteCourant compteCourant = input.getCompteCourant();
@@ -41,6 +54,13 @@ public class ClientService extends GenericService<Client> implements IClientServ
 		return super.save(input);
 	}
 
+	/**
+	 * Methode pour la suppression d'un compte courant d'un client dans la base de
+	 * donnees
+	 * 
+	 * @param input
+	 *            Client a qui on souhaite supprimer le compte courant.
+	 */
 	public void deleteCompteCourant(Client client) {
 		if (client != null) {
 			CompteCourant compte = client.getCompteCourant();
@@ -51,6 +71,13 @@ public class ClientService extends GenericService<Client> implements IClientServ
 		}
 	}
 
+	/**
+	 * Methode pour la suppression d'un compte epargne d'un client dans la base de
+	 * donnees
+	 * 
+	 * @param input
+	 *            Client a qui on souhaite supprimer le compte epargne.
+	 */
 	public void deleteCompteEpargne(Client client) {
 		if (client != null) {
 			CompteEpargne compte = client.getCompteEpargne();
@@ -62,6 +89,9 @@ public class ClientService extends GenericService<Client> implements IClientServ
 
 	}
 
+	/**
+	 * Recupere la liste des clients enregistres dans la base de donnees
+	 */
 	public List<Client> listerClients() {
 		return dao.findAll();
 	}

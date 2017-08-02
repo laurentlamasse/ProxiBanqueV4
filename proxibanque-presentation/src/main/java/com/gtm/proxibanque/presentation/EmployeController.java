@@ -13,6 +13,15 @@ import com.gtm.proxibanque.domaine.Gerant;
 import com.gtm.proxibanque.service.interfaces.IConseillerService;
 import com.gtm.proxibanque.service.interfaces.IGerantService;
 
+/**
+ * Classe Bean qui sera instancie par JSF et sera initialise a partir des
+ * informations founies par la page JSF (exemple : les valeurs des champs d'un
+ * formulaire). Cette classe permet la gestion du binding c'est a dire le
+ * branchement entre l'univers web et l'univers java.
+ * 
+ * EmployeController injecte 2 services utilises pour la gestion des employes :
+ * - IConseillerService conseillerService - IGerantService gerantService
+ */
 @Controller
 @Scope("session")
 public class EmployeController {
@@ -32,6 +41,10 @@ public class EmployeController {
 
 	}
 
+	/**
+	 * Methode d'initialisation appelee automatiquement apres l'instanciation de la
+	 * classe EmployeController.
+	 */
 	@PostConstruct
 	public void init() {
 		gerant = new Gerant();
@@ -40,6 +53,11 @@ public class EmployeController {
 		listeConseiller = (ArrayList<Conseiller>) conseillerService.listerConseillers();
 	}
 
+	/**
+	 * Enregistre un conseiller dans la base de donnees
+	 * 
+	 * @return
+	 */
 	public String ajouterConseiller() {
 		Conseiller conseillerCopie = new Conseiller(conseiller);
 		conseillerService.initialiserListe(conseillerCopie);
@@ -47,14 +65,26 @@ public class EmployeController {
 		return "listeConseiller";
 	}
 
+	/**
+	 * Supprime un conseiller de la base de donnees
+	 * 
+	 * @param id
+	 *            Identifiant (Cle primaire) du conseiller a supprimer
+	 * @return
+	 */
 	public String supprimerConseiller(int id) {
 		conseiller = conseillerService.findOne(id);
-		if(conseiller.getListeClients().isEmpty()) {
+		if (conseiller.getListeClients().isEmpty()) {
 			conseillerService.delete(id);
 		}
 		return "listeConseiller";
 	}
-	
+
+	/**
+	 * Enregistre un gerant dans la base de donnee
+	 * 
+	 * @return
+	 */
 	public String ajouterGerant() {
 		gerantService.initialiserListe(gerant);
 		gerantService.creerGerant(gerant);
@@ -77,6 +107,11 @@ public class EmployeController {
 		this.conseiller = conseiller;
 	}
 
+	/**
+	 * Recupere la liste des conseillers enregistres dans la base de donnees
+	 * 
+	 * @return
+	 */
 	public ArrayList<Conseiller> getListeConseiller() {
 		listeConseiller = (ArrayList<Conseiller>) conseillerService.listerConseillers();
 		return listeConseiller;

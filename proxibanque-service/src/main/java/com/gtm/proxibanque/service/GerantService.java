@@ -13,6 +13,11 @@ import com.gtm.proxibanque.domaine.Conseiller;
 import com.gtm.proxibanque.domaine.Gerant;
 import com.gtm.proxibanque.service.interfaces.IGerantService;
 
+/**
+ * Classe implementant l'interface IGerantService et heritant de GenericService<Gerant>
+ * Cette classe fournit les methodes du service lie a la gestion des gerants.
+ *
+ */
 @Service("GerantService")
 public class GerantService extends GenericService<Gerant> implements IGerantService {
 

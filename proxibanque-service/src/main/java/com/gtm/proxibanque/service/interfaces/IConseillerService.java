@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.gtm.proxibanque.domaine.Conseiller;
 
+/**
+ * Interface fournissant les signatures des methodes pour la gestion des conseillers.
+ * Cette interface herite de IGenericService<Conseiller>
+ */
 public interface IConseillerService extends IGenericService<Conseiller>{
 
 	public Conseiller trouverConseiller(int id);
