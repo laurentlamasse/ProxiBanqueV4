@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -12,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import com.gtm.proxibanque.domaine.Compte;
 import com.gtm.proxibanque.domaine.CompteCourant;
 import com.gtm.proxibanque.domaine.CompteEpargne;
+import com.gtm.proxibanque.domaine.Conseiller;
 import com.gtm.proxibanque.service.interfaces.ICompteService;
+import com.gtm.proxibanque.service.interfaces.IConseillerService;
 
 @Controller
 @Scope("session")
@@ -26,6 +30,8 @@ public class CompteController {
 
 	@Autowired
 	private ICompteService compteService;
+	@Autowired
+	private IConseillerService conseillerService;
 
 	// Constructeur
 	public CompteController() {
@@ -77,6 +83,15 @@ public class CompteController {
 		ArrayList<String> listeNumero = (ArrayList<String>) compteService.listerComptes().stream()
 				.map(c -> c.getNumeroCompte()).sorted().collect(Collectors.toList());
 		return listeNumero;
+	}
+	
+	public ArrayList<Compte> getListeCompteConseiller() {
+		//TODO Récupérer la liste des clients du conseiller puis récupérer tous les comptes existants de ces clients
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
+                .getExternalContext().getRequest();
+		String login = request.getRemoteUser();
+		Conseiller conseiller = conseillerService.trouverConseillerParLogin(login);
+		return null;
 	}
 
 //	public String ajouterCompteCourant() {
