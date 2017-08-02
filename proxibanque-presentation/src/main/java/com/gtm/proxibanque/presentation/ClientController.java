@@ -59,6 +59,15 @@ public class ClientController {
 	public void setClient(Client Client) {
 		this.client = Client;
 	}
+	
+	public ArrayList<Client> getListeClientConseiller() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
+                .getExternalContext().getRequest();
+		String login = request.getRemoteUser();
+		Conseiller conseiller = conseillerService.trouverConseillerParLogin(login);
+		ArrayList<Client> listeTemp = new ArrayList<Client>(conseiller.getListeClients());
+		return listeTemp;		
+	}
 
 	public ArrayList<Client> getListeClient() {
 		return (ArrayList<Client>) clientService.listerClients();

@@ -39,10 +39,10 @@
 				
 				<div class="tab-content">
                     <div id="conseillers" class="tab-pane fade in active">
-                        <h:panelGroup rendered="#{empty clientController.listeClient}">
-                            <em>Pas de clients.</em>
+                        <h:panelGroup rendered="#{empty clientController.listeClientConseiller}">
+                            <em>Pas de clients pour ce conseiller.</em>
                         </h:panelGroup>
-                        <h:dataTable var="c" value="#{clientController.listeClient}" rendered="#{not empty clientController.listeClient}" styleClass="table table-hover">
+                        <h:dataTable var="c" value="#{clientController.listeClientConseiller}" rendered="#{not empty clientController.listeClientConseiller}" styleClass="table table-hover">
                             <h:column>
                                 <f:facet name="header">Nom</f:facet>
                                 #{c.nom}
