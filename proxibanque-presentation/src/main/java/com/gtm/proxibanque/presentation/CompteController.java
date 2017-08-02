@@ -18,6 +18,15 @@ import com.gtm.proxibanque.domaine.Conseiller;
 import com.gtm.proxibanque.service.interfaces.ICompteService;
 import com.gtm.proxibanque.service.interfaces.IConseillerService;
 
+/**
+ * Classe Bean qui sera instancie par JSF et sera initialise a partir des
+ * informations founies par la page JSF (exemple : les valeurs des champs d'un
+ * formulaire). Cette classe permet la gestion du binding c'est a dire le
+ * branchement entre l'univers web et l'univers java.
+ * 
+ * CompteController injecte un service utilise pour la gestion des comptes : -
+ * ICompteService compteService
+ */
 @Controller
 @Scope("session")
 public class CompteController {
@@ -35,11 +44,15 @@ public class CompteController {
 
 	// Constructeur
 	public CompteController() {
-		}
+	}
 
+	/**
+	 * Methode d'initialisation appelee automatiquement apres l'instanciation de la
+	 * classe CompteController.
+	 */
 	@PostConstruct
 	public void init() {
-		//compte = new Compte();
+		// compte = new Compte();
 		compteCourant = new CompteCourant();
 		compteEpargne = new CompteEpargne();
 		listeCompte = new ArrayList<Compte>();
@@ -79,28 +92,25 @@ public class CompteController {
 		this.listeCompte = listeCompte;
 	}
 
+	/**
+	 * Permet de recuperer la liste des numeros de comptes enregistre dans la base
+	 * de donnees
+	 * 
+	 * @return Liste des numero de comptes (courant et epargne)
+	 */
 	public ArrayList<String> getListeNumeroCompte() {
 		ArrayList<String> listeNumero = (ArrayList<String>) compteService.listerComptes().stream()
 				.map(c -> c.getNumeroCompte()).sorted().collect(Collectors.toList());
 		return listeNumero;
 	}
-	
+
 	public ArrayList<Compte> getListeCompteConseiller() {
-		//TODO Récupérer la liste des clients du conseiller puis récupérer tous les comptes existants de ces clients
-		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance()
-                .getExternalContext().getRequest();
+		// TODO Récupérer la liste des clients du conseiller puis récupérer tous les
+		// comptes existants de ces clients
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
 		String login = request.getRemoteUser();
 		Conseiller conseiller = conseillerService.trouverConseillerParLogin(login);
 		return null;
 	}
-
-//	public String ajouterCompteCourant() {
-//		compteService.creerCompte(compteCourant);
-//		return "gestionCompte";
-//	}
-//
-//	public String ajouterCompteEpargne() {
-//		compteService.creerCompte(compteEpargne);
-//		return "gestionCompte";
-//	}
 }

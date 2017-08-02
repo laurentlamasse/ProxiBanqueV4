@@ -12,14 +12,13 @@ import javax.persistence.Table;
 /**
  * Represente un client <br />
  * Un client possede les attributs suivants : <br />
+ * - int idClient : cle primaire utilisee dans la base de donnees (generation automatique) <br />
  * - String nom <br />
  * - String prenom<br />
  * - String email <br />
  * - String adresse <br />
- * - int id : cle primaire utilisee dans la base de donnees (generation automatique) <br />
  * - CompteCourant compteCourant : relation OneToOne <br />
  * - CompteEpargne compteEpargne : relation OneToOne <br />
- * - Conseiller conseiller : relation OneToOne
  */
 @Entity
 @Table(name = "client")

@@ -19,6 +19,12 @@ import com.gtm.proxibanque.domaine.CompteEpargne;
 import com.gtm.proxibanque.domaine.Virement;
 import com.gtm.proxibanque.service.interfaces.IVirementService;
 
+/**
+ * Classe implementant l'interface IVirementService et heritant de
+ * GenericService<Virement> Cette classe fournit les methodes du service lie a
+ * la gestion des virements.
+ *
+ */
 @Service("virementService")
 public class VirementService extends GenericService<Virement> implements IVirementService {
 
@@ -53,6 +59,9 @@ public class VirementService extends GenericService<Virement> implements IVireme
 		return dao.findAll();
 	}
 
+	/**
+	 * Cree un virement entre 2 comptes
+	 */
 	public boolean createVirement(Virement virement) {
 		// TODO Si la DAO plante, annuler le virement
 
@@ -111,44 +120,35 @@ public class VirementService extends GenericService<Virement> implements IVireme
 
 		return true;
 	}
-	
-	
+
+	/**
+	 * Methode de traitement pour les informations du diagramme circulaire. Les
+	 * valeurs sont generees en fonction des virements effectues entre la date1 et
+	 * la date2
+	 */
 	public ArrayList<Long> getSectionPourCamembert(Date date1, Date date2) {
-		
-		
+
 		ArrayList<Long> listSection = new ArrayList<Long>();
 		ArrayList<Virement> malist = (ArrayList<Virement>) dao.findAll().stream()
-				.filter(c -> c.getDate().before(date2)&&c.getDate().after(date1))
-				.collect(Collectors.toList());
-		
-		
-		long section1 = malist.stream()
-				.filter(c -> c.getMontant()>0 && c.getMontant()<=200)
-				.count();
+				.filter(c -> c.getDate().before(date2) && c.getDate().after(date1)).collect(Collectors.toList());
+
+		long section1 = malist.stream().filter(c -> c.getMontant() > 0 && c.getMontant() <= 200).count();
 		listSection.add(section1);
-		
-		long section2 = malist.stream()
-				.filter(c -> c.getMontant()>200 && c.getMontant()<=500)
-				.count();
+
+		long section2 = malist.stream().filter(c -> c.getMontant() > 200 && c.getMontant() <= 500).count();
 		listSection.add(section2);
-		
-		long section3 = malist.stream()
-				.filter(c -> c.getMontant()>500 && c.getMontant()<=1000)
-				.count();
+
+		long section3 = malist.stream().filter(c -> c.getMontant() > 500 && c.getMontant() <= 1000).count();
 		listSection.add(section3);
-		
-		long section4 = malist.stream()
-				.filter(c -> c.getMontant()>1000 && c.getMontant()<=5000)
-				.count();
+
+		long section4 = malist.stream().filter(c -> c.getMontant() > 1000 && c.getMontant() <= 5000).count();
 		listSection.add(section4);
-		
-		long section5 = malist.stream()
-				.filter(c -> c.getMontant()>5000)
-				.count();
+
+		long section5 = malist.stream().filter(c -> c.getMontant() > 5000).count();
 		listSection.add(section5);
-		
-		return listSection;	
-		
+
+		return listSection;
+
 	}
 
 }

@@ -15,12 +15,12 @@ import com.gtm.proxibanque.domaine.Compte;
 /**
  * Represente un virement entre deux comptes bancaires <br />
  * Un virement possede les attributs suivants : <br />
- * - int id : cle primaire utilise dans la base de donnees (generation
+ * - int idVirement : cle primaire utilise dans la base de donnees (generation
  * automatique)<br />
- * - Compte compteDebiteur : relation OneToOne<br />
- * - Compte compteCrediteur : relation OneToOne<br />
+ * - Compte compteDebite : relation OneToOne<br />
+ * - Compte compteCredite : relation OneToOne<br />
  * - Date date <br />
- * - String commentaire<br />
+ * - String message<br />
  * - double montant<br />
  */
 @Entity

@@ -13,6 +13,11 @@ import com.gtm.proxibanque.domaine.Client;
 import com.gtm.proxibanque.domaine.Conseiller;
 import com.gtm.proxibanque.service.interfaces.IConseillerService;
 
+/**
+ * Classe implementant l'interface IConseillerService et heritant de GenericService<Conseiller>
+ * Cette classe fournit les methodes du service lie a la gestion des comptes.
+ *
+ */
 @Service("ConseillerService")
 public class ConseillerService extends GenericService<Conseiller> implements IConseillerService {
 
@@ -61,6 +66,9 @@ public class ConseillerService extends GenericService<Conseiller> implements ICo
 		conseiller.setListeClients(new HashSet<Client>());
 	}
 	
+	/**
+	 * Recupere le conseiller a partir de son login
+	 */
 	public Conseiller trouverConseillerParLogin(String login) {
 		return dao.getConseillerByLogin(login);
 	}

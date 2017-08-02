@@ -8,7 +8,6 @@ import java.io.Serializable;
 /**
  * Represente un Compte Courant, cette classe herite de la classe Compte.<br />
  * Un Compte Courant possede les attributs suivants :<br />
- * - String className<br />
  * - double decouvertAutorise<br />
  */
 @Entity
