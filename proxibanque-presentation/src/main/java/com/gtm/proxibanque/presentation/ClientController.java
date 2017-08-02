@@ -95,6 +95,26 @@ public class ClientController {
 		return "listeClients";
 	}
 	
+	public String modifierClient(int idClient) {
+		client = clientService.findOne(idClient); 
+		client = clientService.creerClient(client);
+
+		if (selectCC) {
+			CompteCourant compte = new CompteCourant();
+			compte.setSolde(soldeCC);
+			compte.setDecouvertAutorise(decouvertCC);
+			compteService.creerCompte(compte, client);
+		}
+		client = clientService.findOne(client.getIdClient());
+		if (selectCE) {
+			CompteEpargne compte = new CompteEpargne();
+			compte.setSolde(soldeCE);
+			compte.setTauxRemuneration(tauxCE);
+			compteService.creerCompte(compte, client);
+		}
+		return "listeClients";
+	}
+	
 	public String affichageClient(int idClient) {
 		client = clientService.findOne(idClient);
 		return "detailsClient";
