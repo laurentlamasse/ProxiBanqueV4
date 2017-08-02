@@ -2,6 +2,7 @@ package com.gtm.proxibanque.service.test;
 
 import static org.junit.Assert.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -13,6 +14,7 @@ public class CompteServiceTest {
 	private ICompteService compteService;
 	private ICompteDao daoC = Mockito.mock(ICompteDao.class);
 	
+	@Ignore
 	@Test
 	public void test() {
 		fail("Not yet implemented");

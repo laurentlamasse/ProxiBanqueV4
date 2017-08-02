@@ -134,7 +134,7 @@ public class ClientController {
 	 * 
 	 * @return
 	 */
-	public String modifierClient(int idClient) {
+	public String modifierClient() {
 		// client = clientService.findOne(idClient);
 		client = clientService.creerClient(client);
 
@@ -175,7 +175,12 @@ public class ClientController {
 		clientService.delete(idClient);
 		return "listeClients";
 	}
-
+	
+	public String supprimerClientGerant(int idClient) {
+		clientService.delete(idClient);
+		return "listeClients";
+	}
+	
 	/**
 	 * Affiche les informations lie a un client
 	 * 
