@@ -32,6 +32,14 @@ public class CompteService extends GenericService<Compte> implements ICompteServ
 	public IGenericDao<Compte> getDao() {
 		return compteDao;
 	}
+	
+	public CompteService() {
+		
+	}
+	
+	public CompteService(ICompteDao compteDao) {
+		this.compteDao = compteDao;
+	}
 
 	/**
 	 * Recupere via la DAO une List contenant tous les Comptes enregistres en base.
