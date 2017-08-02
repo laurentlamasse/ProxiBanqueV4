@@ -8,12 +8,12 @@ import java.util.Collection;
  * Represente un employe, cette classe est abstraite. Les classes Gerant et
  * Conseiller en heritent.<br />
  * Un employe possede les attributs suivants : <br />
- * - int id : cle primaire utilisee dans la base de donnees (generation
+ * - int idEmploye : cle primaire utilisee dans la base de donnees (generation
  * automatique)<br />
  * - String nom<br />
  * - String prenom<br />
  * - String login<br />
- * - String motdepasse<br />
+ * - String password<br />
  */
 @Entity
 // @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

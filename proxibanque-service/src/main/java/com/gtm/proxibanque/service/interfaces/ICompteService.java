@@ -7,6 +7,10 @@ import com.gtm.proxibanque.domaine.Compte;
 import com.gtm.proxibanque.domaine.CompteCourant;
 import com.gtm.proxibanque.domaine.CompteEpargne;
 
+/**
+ * Interface fournissant les signatures des methodes pour la gestion des comptes.
+ * Cette interface herite de IGenericService<Compte>
+ */
 public interface ICompteService extends IGenericService<Compte>{
 
 	public void creerCompte(CompteCourant compte, Client client);

@@ -2,6 +2,9 @@ package com.gtm.proxibanque.service.interfaces;
 
 import com.gtm.proxibanque.domaine.Gerant;
 
+/**
+ * Interface fournissant les signatures des methodes pour la gestion des gerants.
+ */
 public interface IGerantService {
 
 	

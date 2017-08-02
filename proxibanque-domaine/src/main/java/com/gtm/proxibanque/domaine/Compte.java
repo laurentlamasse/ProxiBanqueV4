@@ -11,8 +11,8 @@ import java.io.Serializable;
  * Represente un Compte, cette classe est abstraite. Les classes CompteCourant
  * et CompteEpargne en heritent.<br />
  * Un compte possede les attributs suivants : <br />
- * - int id : cle primaire utilisee dans la base de donnees (generation automatique)<br />
- * - String numero<br />
+ * - int idCompte : cle primaire utilisee dans la base de donnees (generation automatique)<br />
+ * - String numeroCompte<br />
  * - double solde<br />
  * - Client proprietaire : relation OneToOne<br />
  */

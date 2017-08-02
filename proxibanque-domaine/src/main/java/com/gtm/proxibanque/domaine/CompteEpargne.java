@@ -7,7 +7,6 @@ import java.io.Serializable;
 /**
  * Represente un Compte Epargne, cette classe herite de la classe Compte.<br />
  * Un Compte Epargne possede les attributs suivants :<br />
- * - String className<br />
  * - double tauxRemuneration<br />
  */
 @Entity
