@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+>
+
+<ui:composition template="/template/layoutConseiller.xhtml">
+    <ui:define name="page_title">Création d'un client</ui:define>
+    <ui:define name="content">
+        <div class="container">
+        <!--Corps de la page-->
+		<div class="row">
+			<h1 class="modif">Test du Web Service</h1>
+			<hr />
+	            <h:form styleClass="form-horizontal">
+	                <div class="form-group">
+	                    <h:outputLabel for="nom" class="col-md-2">Rentrer un id employer : </h:outputLabel>
+			  			<h:inputText id="nom" class="col-md-2" required="true" requiredMessage="Veuillez entrer un id" value="#{conseillerController.testWBById()}" a:placeholder="id"/> 
+			  			<h:message for = "nom" style = "color:red" />               
+	                </div>
+	     
+	            </h:form>
+		</div>
+		</div>        
+    </ui:define>
+</ui:composition>
+</html>
