@@ -90,6 +90,11 @@ public class ClientController {
 		return "listeClients";
 	}
 	
+	public String supprimerClient(int id) {
+		clientService.delete(id);
+		return "listeClients";
+	}
+	
 	public String affichageClient(int idClient) {
 		client = clientService.findOne(idClient);
 		return "detailsClient";

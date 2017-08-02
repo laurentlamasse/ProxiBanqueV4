@@ -60,6 +60,7 @@
                             	<f:facet name="header">Actions</f:facet>
                             	<h:form>
 								   <h:commandLink value="Détails" action="#{clientController.affichageClient(c.idClient)}" styleClass="btn btn-primary btn-sm" />
+								   <h:commandLink value="Supprimer" action="#{clientController.supprimerClient(c.idClient)}" styleClass="btn btn-danger btn-sm" />
 								</h:form>
                             </h:column>
                         </h:dataTable>
