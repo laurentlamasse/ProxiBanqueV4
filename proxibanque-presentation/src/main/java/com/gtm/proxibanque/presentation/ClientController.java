@@ -135,7 +135,7 @@ public class ClientController {
 	 * @return
 	 */
 	public String modifierClient(int idClient) {
-		client = clientService.findOne(idClient);
+		// client = clientService.findOne(idClient);
 		client = clientService.creerClient(client);
 
 		if (selectCC) {
@@ -152,27 +152,45 @@ public class ClientController {
 			compteService.creerCompte(compte, client);
 		}
 		return "listeClients";
+
 	}
 
 	/**
 	 * Permet de supprimer le client de la base de donnees
+	 * 
 	 * @param id
-	 * Identifiant (cle primaire) du client
+	 *            Identifiant (cle primaire) du client
 	 * @return
 	 */
-	public String supprimerClient(int id) {
-		clientService.delete(id);
+	public String supprimerClient(int idClient) {
+		HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		String login = request.getRemoteUser();
+		int idConseiller = conseillerService.trouverConseillerParLogin(login).getIdEmploye();
+		Conseiller conseiller = conseillerService.trouverConseiller(idConseiller);
+		client = clientService.findOne(idClient);
+		// TODO remove ne fonctionne pas
+		// conseiller.getListeClients().remove(client);
+		conseillerService.updateConseiller(conseiller);
+		clientService.delete(idClient);
 		return "listeClients";
 	}
 
 	/**
 	 * Affiche les informations lie a un client
-	 * @param idClient Identifiant du client a afficher
+	 * 
+	 * @param idClient
+	 *            Identifiant du client a afficher
 	 * @return
 	 */
 	public String affichageClient(int idClient) {
 		client = clientService.findOne(idClient);
 		return "detailsClient";
+	}
+
+	public String modificationClient(int idClient) {
+		client = clientService.findOne(idClient);
+		return "modificationClient";
 	}
 
 	public boolean isSelectCC() {

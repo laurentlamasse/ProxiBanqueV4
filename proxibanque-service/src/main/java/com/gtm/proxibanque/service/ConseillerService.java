@@ -57,6 +57,10 @@ public class ConseillerService extends GenericService<Conseiller> implements ICo
 	public void creerConseiller(Conseiller conseiller) {
 		dao.save(conseiller);
 	}
+	
+	public void updateConseiller(Conseiller conseiller) {
+		dao.save(conseiller);
+	}
 
 	public void initialiserListe(Conseiller conseiller) {
 		conseiller.setListeClients(new HashSet<Client>());
