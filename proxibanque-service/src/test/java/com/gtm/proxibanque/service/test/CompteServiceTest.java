@@ -15,7 +15,7 @@ public class CompteServiceTest {
 	private ICompteDao daoC = Mockito.mock(ICompteDao.class);
 	
 	@Ignore
-	@Test
+	@Test 
 	public void test() {
 		fail("Not yet implemented");
 	}
