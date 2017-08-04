@@ -7,6 +7,12 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.GenericType;
+import javax.ws.rs.core.Response;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -127,28 +133,25 @@ public class VirementService extends GenericService<Virement> implements IVireme
 	 * la date2
 	 */
 	public ArrayList<Long> getSectionPourCamembert(Date date1, Date date2) {
+		
+		String sDate1 = new SimpleDateFormat("yyyy-MM-dd").format(date1);
+		String sDate2 = new SimpleDateFormat("yyyy-MM-dd").format(date2);
 
-		ArrayList<Long> listSection = new ArrayList<Long>();
-		ArrayList<Virement> malist = (ArrayList<Virement>) dao.findAll().stream()
-				.filter(c -> c.getDate().before(date2) && c.getDate().after(date1)).collect(Collectors.toList());
-
-		long section1 = malist.stream().filter(c -> c.getMontant() > 0 && c.getMontant() <= 200).count();
-		listSection.add(section1);
-
-		long section2 = malist.stream().filter(c -> c.getMontant() > 200 && c.getMontant() <= 500).count();
-		listSection.add(section2);
-
-		long section3 = malist.stream().filter(c -> c.getMontant() > 500 && c.getMontant() <= 1000).count();
-		listSection.add(section3);
-
-		long section4 = malist.stream().filter(c -> c.getMontant() > 1000 && c.getMontant() <= 5000).count();
-		listSection.add(section4);
-
-		long section5 = malist.stream().filter(c -> c.getMontant() > 5000).count();
-		listSection.add(section5);
-
-		return listSection;
-
+		ArrayList<Long> listeSection;
+		try
+		{
+			Client client = ClientBuilder.newClient();
+			WebTarget target = client.target("http://localhost:8080/proxibanquews/rest/json");
+			Response response = target.queryParam("date1", sDate1).queryParam("date2", sDate2).request().get();
+			listeSection = response.readEntity(new GenericType<ArrayList<Long>>() {});
+			response.close();
+		}
+		catch(Exception e)
+		{
+			listeSection = new ArrayList();
+		}
+		
+		return listeSection;
 	}
 
 }

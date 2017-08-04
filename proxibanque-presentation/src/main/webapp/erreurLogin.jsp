@@ -18,30 +18,34 @@
 <script src="/resources/js/script.js"></script>
 </head>
 <body>
-	<div class="container" id="container">
-
-		<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavbar">
-					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">ProxiBanque</a>
-			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="/Proxibanque/home.xhtml">Accueil</a></li>
-				</ul>
-			</div>
+	
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">ProxiBanque</a>
 		</div>
-		</nav>
-
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li class="active"><a href="/Proxibanque/home.xhtml">Accueil</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+		
+	<div class="container" id="container">	
 		<div class="row">
+			<br/>
+			<br/>
+			<br/>
+			<br/>
 			<h1>Echec de l'authentification et/ou de l'autorisation</h1>
 		</div>
-
 	</div>
+	
 </body>
 </html>

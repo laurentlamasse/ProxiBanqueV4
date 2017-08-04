@@ -62,6 +62,12 @@
 		</dependency>
 
 
+		<!-- RESTEasy client -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+			<version>3.0.21.Final</version>
+		</dependency>
 
 
 		<!-- JUNIT -->
